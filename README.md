@@ -1,9 +1,6 @@
-
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/atlantis-logo.png?raw=true)
 
-*Finally, the Swift logging framework we all needed*
-
-A light-weight logging framework written in swift.
+# A swift logging framework.
 
 I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility and some key attributes that xcode's native ```print()``` function had. I took some of his code and added a couple of things and came up with this framework.
 
