@@ -13,11 +13,17 @@ So as of now, I don't really know how to create a cocoapods link using only swif
 
 ### What can this do for me?
 
-Let's start of with the basics,
-
-##### Differentiated logging types along with source file, trace, and line number
+##### Differentiated logging types along with the stamp trace of the source file, function name, and line number
 
 ```swift
+
+// I suggest initializing this variable in the global instance, 
+// it's memory leak free and it won't do anything crazy since 
+// I know some of you hate Singleton designs ;) 
+// It's a logger framework people.
+
+let log = Atlantis.Logger()
+
 log.verose("Hello, World!")
 
 log.info("Hello, World!")
@@ -25,13 +31,13 @@ log.info("Hello, World!")
 log.warning("Hello, World!")
 
 log.error("Hello, World!")
-
-// 'none' logging type also available
 ```
 
 Which prints the following...
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors.png?raw=true)
+
+Note: ```.None``` log type is also available, use this when your app goes on production. Atlantis will skip all code execution if need be.
 
 Note: the logging framework doesn't print in colors by default, you will have to set as early as you can (preferably in the AppDelegate) like so...
 
@@ -40,6 +46,10 @@ Atlantis.Configuration.hasColoredLogs = true
 ```
 
 However, for you to enable colors you will have to firs download the xcode package manager [Alcatraz](http://alcatraz.io/), then after you enable it inside xcode, pull up the package manager itself and install [XCodeColors](https://github.com/robbiehanson/XcodeColors)
+
+#### Input Agnostic
+
+
 
 #### Customization
 
@@ -73,11 +83,11 @@ Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor)
 Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UIColor)
 ```
 
-
-
-
-
-#### 
+####To Do
+1. ~~create a logging framework~~
+2. ~~add color customization~~
+3. print to a text file when used on a device
+4. pretty print object types
 
 ### License
 The MIT License (MIT)

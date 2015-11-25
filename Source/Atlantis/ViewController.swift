@@ -15,11 +15,6 @@ public let log = Atlantis.Logger()
 
 class ViewController: UIViewController {
   
-  private let error = NSError(domain: "this is an error", code: 404, userInfo: nil)
-  
-  private var null: Int? = nil
-  
-  var array: [String?] = ["Hello", "World", nil, "Null"]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,17 +23,6 @@ class ViewController: UIViewController {
     // init Atlantis
     Atlantis.Configuration.hasColoredLogs = true
     
-    
-    
-    
-    
-    Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: <#T##UIColor#>)
-    
-    
-    
-    
-    
-    
     print("\n\n\n\n\n")
     
     log.verbose("Hello, World!")
@@ -46,59 +30,54 @@ class ViewController: UIViewController {
     log.warning("Hello, World!")
     log.debug("Hello, World!")
     log.error("Hello, World!")
+    
+    private let error = NSError(domain: "this is an error", code: 404, userInfo: nil)
+    
+    private var null: Int? = nil
+    
+    var array: [String?] = ["Hello", "World", nil, "Null"]
 
+    let doIExist: String? = nil
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    log.warning(doIExist)
     
 
-//    log.warning(null)
-//    
-//    log.debug(["Hello", "World!"])
-//    
-//    log.error(["Hello": 0])
-//    
-//    log.info("Hello, World!")
-//    
-//    log.error(error, "bad")
-//    
-//    longgggggggggggggggggeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrFunctionName()
-//    longggggggggggggggggggggggggggggggggggggFunctionName()
-//
-//    promiseTest()
-//    .then { log.debug($0) }
-//    .error { log.error($0) }
-//    
-//    promiseTest2()
-//    .then { log.debug($0) }
-//    .error { log.error($0) }
-//
-//    enum x: ErrorType {
-//      case HelloThisIsAnErrorType(String)
-//    }
-//
-//    promiseTest2()
-//    .then { res -> Bool in
-//      throw x.HelloThisIsAnErrorType("with a string argument")
-//    }
-//    .then { log.tap.info($0) }
-//    .error { log.error($0) }
-//    
-//    promiseTest2()
-//    .then { res -> Bool in
-//      throw NSError(domain: "an error", code: 404, userInfo: nil)
-//    }
-//    .then { log.tap.info($0) }
-//    .error { log.error($0) }
+    log.debug(["Hello", "World!"])
+    
+    log.error(["Hello": 0])
+    
+    log.info("Hello, World!")
+    
+    log.error(error, "bad")
+    
+    longgggggggggggggggggeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrFunctionName()
+    longggggggggggggggggggggggggggggggggggggFunctionName()
+
+    promiseTest()
+    .then { log.debug($0) }
+    .error { log.error($0) }
+    
+    promiseTest2()
+    .then { log.debug($0) }
+    .error { log.error($0) }
+
+    enum x: ErrorType {
+      case HelloThisIsAnErrorType(String)
+    }
+
+    promiseTest2()
+    .then { res -> Bool in
+      throw x.HelloThisIsAnErrorType("with a string argument")
+    }
+    .then { log.tap.info($0) }
+    .error { log.error($0) }
+    
+    promiseTest2()
+    .then { res -> Bool in
+      throw NSError(domain: "an error", code: 404, userInfo: nil)
+    }
+    .then { log.tap.info($0) }
+    .error { log.error($0) }
   }
   
   private func longggggggggggggggggggggggggggggggggggggFunctionName() {
