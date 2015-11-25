@@ -158,7 +158,7 @@ The ```Atlantis.Configuration``` houses configuration variables that allow you c
 .logColors = { .Purple, .Green, .Yellow, .Blue, .Red }
 ```
 
-Other colors configurations include ```black, blue, darkGreen, darkGrey, lightGrey, orange, white, and whiteOnRed```
+Other color configurations include ```black, blue, darkGreen, darkGrey, lightGrey, orange, white, and whiteOnRed```
 
 You can even create your own colors and specify the foreground and background...
 
