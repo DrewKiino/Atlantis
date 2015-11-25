@@ -499,6 +499,7 @@ public struct Atlantis {
       var i = 0
       switch logLevel {
       case .Info: i = 3; break
+      case .Warning: i = 1; break
       case .Error: i = 4; break
       default: break
       }

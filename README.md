@@ -22,14 +22,35 @@ log.warning("Hello, World!")
 
 log.error("Hello, World!")
 
-// none logging type also available
+// 'none' logging type also available
 ```
 
 Note: the logging framework doesn't print in colors by default, you will have to set as early as you can (preferably in the AppDelegate) like so...
+
 ```swift
 Atlantis.Configuration.hasColoredLogs = true
 ```
+
 However, for you to enable colors you will have to firs download the xcode package manager [Alcatraz](http://alcatraz.io/), then after you enable it inside xcode, pull up the package manager itself and install [XCodeColors](https://github.com/robbiehanson/XcodeColors)
+
+The ```Atlantis.Configuration``` houses configuration variables that allow you change the behaviour of the logger. The following behaviours can be configured and their defaults are as follows...
+
+```swift
+.logLevel = .Verbose
+.hasColoredLogs = false
+.hasWhiteBackground = false
+.showExtraInfo = true
+.logColors = { .Purple, .Green, .Yellow, .Blue, .Red }
+```
+
+other colors configurations include 
+
+
+
+
+
+
+
 
 #### 
 
