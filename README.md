@@ -30,6 +30,8 @@ log.info("Hello, World!")
 
 log.warning("Hello, World!")
 
+log.debug("Hello, World!")
+
 log.error("Hello, World!")
 ```
 
