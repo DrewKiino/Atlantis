@@ -1,0 +1,22 @@
+#Podfile
+
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.4'
+
+link_with 'Atlantis', 'AtlantisTests'
+
+use_frameworks!
+
+#####################################
+
+pod 'PromiseKit', :git => 'https://github.com/mxcl/PromiseKit.git', :branch => 'changes-for-3.0'
+
+#####################################
+# unit testing
+
+target 'AtlantisTests' do
+
+end
+
+#####################################
