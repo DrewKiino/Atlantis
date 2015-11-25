@@ -3,7 +3,7 @@
 # Atlantis
 *a  Swift logger framework*
 
-I was inspired by Dave Wood's [Dave Wood](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility. I took some of his code and added a couple of things and this framework was born. 
+I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility. I took some of his code and added a couple of things and came up with this framework.
 
 ### What can this do for me?
 
