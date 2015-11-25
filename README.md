@@ -2,6 +2,8 @@
 ```swift
 log.debug("Hello, World!")
 ```
+will print, 
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/verbose-print.png?raw=true)
 
 # Atlantis
 *a  Swift logger framework*
