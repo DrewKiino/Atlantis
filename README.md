@@ -13,31 +13,17 @@ Let's start of with the basics,
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors.png?raw=true)
 
-1. Verbose
-j
 ```swift
 log.verose("Hello, World!")
-```
 
-2. Info
-j
-```swift
 log.info("Hello, World!")
-```
 
-3. Warning
-
-```swift
 log.warning("Hello, World!")
-```
 
-4. Error
-
-```swift
 log.error("Hello, World!")
-```
 
-5. None
+// none logging type also available
+```
 
 Note: the logging framework doesn't print in colors by default, you will have to set as early as you can (preferably in the AppDelegate) like so...
 ```swift
