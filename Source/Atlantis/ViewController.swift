@@ -25,63 +25,74 @@ class ViewController: UIViewController {
     
     print("\n\n\n\n\n")
     
-    log.verbose("Hello, World!")
-    log.info("Hello, World!")
-    log.warning("Hello, World!")
-    log.debug("Hello, World!")
-    log.error("Hello, World!")
+//    log.verbose("Hello, World!")
+//    log.info("Hello, World!")
+//    log.warning("Hello, World!")
+//    log.debug("Hello, World!")
+//    log.error("Hello, World!")
     
-    private let error = NSError(domain: "this is an error", code: 404, userInfo: nil)
+//    private let error = NSError(domain: "this is an error", code: 404, userInfo: nil)
+//    
+//    private var null: Int? = nil
+//    
+//    var array: [String?] = ["Hello", "World", nil, "Null"]
     
-    private var null: Int? = nil
-    
-    var array: [String?] = ["Hello", "World", nil, "Null"]
+//    let arrayOfArrays: [[Int]] = [[0, 1, 2], [3, 4], [5]]
+//
+//    log.info(arrayOfArrays)
 
-    let doIExist: String? = nil
+//    let doIExist: String? = nil
+//    
+//    log.warning(doIExist)
     
-    log.warning(doIExist)
+//    log.debug("Hello, World", 010101, 0.001, ["Hello", "World"], ["Cat", ["Mouse", "Rat"]])
     
+    
+    func add(x: Int, _ y: Int) -> Int { return x + y }
+    
+    let addXY = log.tap.debug(add(3, 5))
 
-    log.debug(["Hello", "World!"])
     
-    log.error(["Hello": 0])
-    
-    log.info("Hello, World!")
-    
-    log.error(error, "bad")
-    
-    longgggggggggggggggggeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrFunctionName()
-    longggggggggggggggggggggggggggggggggggggFunctionName()
-
-    promiseTest()
-    .then { log.debug($0) }
-    .error { log.error($0) }
-    
-    promiseTest2()
-    .then { log.debug($0) }
-    .error { log.error($0) }
-
-    enum x: ErrorType {
-      case HelloThisIsAnErrorType(String)
-    }
-
-    promiseTest2()
-    .then { res -> Bool in
-      throw x.HelloThisIsAnErrorType("with a string argument")
-    }
-    .then { log.tap.info($0) }
-    .error { log.error($0) }
-    
-    promiseTest2()
-    .then { res -> Bool in
-      throw NSError(domain: "an error", code: 404, userInfo: nil)
-    }
-    .then { log.tap.info($0) }
-    .error { log.error($0) }
+//    log.debug(["Hello", "World!"])
+//    
+//    log.error(["Hello": 0])
+//    
+//    log.info("Hello, World!")
+//    
+//    log.error(error, "bad")
+//    
+//    longgggggggggggggggggeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrFunctionName()
+//    longggggggggggggggggggggggggggggggggggggFunctionName()
+//
+//    promiseTest()
+//    .then { log.debug($0) }
+//    .error { log.error($0) }
+//    
+//    promiseTest2()
+//    .then { log.debug($0) }
+//    .error { log.error($0) }
+//
+//    enum x: ErrorType {
+//      case HelloThisIsAnErrorType(String)
+//    }
+//
+//    promiseTest2()
+//    .then { res -> Bool in
+//      throw x.HelloThisIsAnErrorType("with a string argument")
+//    }
+//    .then { log.tap.info($0) }
+//    .error { log.error($0) }
+//    
+//    promiseTest2()
+//    .then { res -> Bool in
+//      throw NSError(domain: "an error", code: 404, userInfo: nil)
+//    }
+//    .then { log.tap.info($0) }
+//    .error { log.error($0) }
   }
   
   private func longggggggggggggggggggggggggggggggggggggFunctionName() {
-    log.debug(error, null, ViewController())
+//    log.debug(error, null, ViewController())
     
     log.info("Hello, World!")
     
@@ -153,4 +164,8 @@ class ViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+}
+
+public class Dog {
+  var name = "Doug"
 }

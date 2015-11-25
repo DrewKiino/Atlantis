@@ -13,7 +13,7 @@ So as of now, I don't really know how to create a cocoapods link using only swif
 
 ### What can this do for me?
 
-##### Differentiated logging types along with the stamp trace of the source file, function name, and line number
+##### Differentiated logging types along with the stamp trace of source file, function name, and line number
 
 ```swift
 
@@ -24,7 +24,7 @@ So as of now, I don't really know how to create a cocoapods link using only swif
 
 let log = Atlantis.Logger()
 
-log.verose("Hello, World!")
+log.verbose("Hello, World!")
 
 log.info("Hello, World!")
 
@@ -37,9 +37,9 @@ Which prints the following...
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors.png?raw=true)
 
-Note: ```.None``` log type is also available, use this when your app goes on production. Atlantis will skip all code execution if need be.
+*Note*: ```.None``` log type is also available, use this when your app goes on production. Atlantis will skip all code execution if need be.
 
-Note: the logging framework doesn't print in colors by default, you will have to set as early as you can (preferably in the AppDelegate) like so...
+*Note*: the logging framework doesn't print its logs in colors by default, if want to, you will have to set the configuration as early as you can preferably in the ```AppDelegate.swift```, like so...
 
 ```swift
 Atlantis.Configuration.hasColoredLogs = true
@@ -47,11 +47,86 @@ Atlantis.Configuration.hasColoredLogs = true
 
 However, for you to enable colors you will have to firs download the xcode package manager [Alcatraz](http://alcatraz.io/), then after you enable it inside xcode, pull up the package manager itself and install [XCodeColors](https://github.com/robbiehanson/XcodeColors)
 
-#### Input Agnostic
+##### Input Agnostic
+
+Besides printing regular data types like ```String``` or ```Int```, with ```Atlantis```, you can do the following: 
+
+* **print nil's**
+
+```swift
+let doIExist: String? = nil
+
+log.warning(doIExist)
+```
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-nil.png?raw=true)
+
+* *print objects or classes*
+
+```swift
+public class Dog {
+  var name = "Doug"
+}
+
+log.debug(Dog())
+```
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-dog.png?raw=true)
+
+* *print arrays*
+
+```swift
+let array: [String] = ["Dog", "Cat"]
+
+log.info(array)
+```
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-array.png?raw=true)
+
+* *print arrays of arrays*
+
+```swift
+let arraysOfArrays: [[Int]] = [[0, 1, 2], [3, 4], [5]]
+
+log.verbose(arrayOfArrays)
+```
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-array-of-arrays.png?raw=true)
+
+yes, it pretty prints nested arrays.
+
+* *print different data types in a single input, including objects, arrays, and of course, nested types*
+
+```swift
+log.debug("Hello, World", 010101, 0.001, ["Hello", "World"], ["Cat", ["Mouse", "Rat"]])
+```
+
+```Atlantis``` will reiterate through each input and prints each one, conveniently pretty printing parsable nested types.
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-agnostic-types.png?raw=true)
+
+* *tap inputs before the actual inputting*
+
+using the ```.tap``` extension as seen here...
+
+```
+func add(x: Int, _ y: Int) -> Int { return x + y }
+
+let addXY = log.tap.debug(add(3, 5))
+```
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-tap-print-add.png?raw=true)
+
+the normal extensions such as ```.Verbose``` etc. are also under ```.Tap```
+
+* *wait, lets do promises with ```.Tap```*
 
 
 
-#### Customization
+
+
+
+##### Customization
 
 The ```Atlantis.Configuration``` houses configuration variables that allow you change the behaviour of the logger. The following behaviours can be configured and their defaults are as follows...
 
@@ -74,11 +149,11 @@ You can even create your own colors and specify the foreground and background...
 
 Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: (Int, Int, Int)>, bg: <(Int, Int, Int)>)
 
-// using UIColor using only the foreground
+// using UIColor setting only the foreground
 
 Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor)
 
-// or using UIColor with both the foreground and background
+// or using UIColor setting both the foreground and background
 
 Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UIColor)
 ```
@@ -87,7 +162,7 @@ Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UI
 1. ~~create a logging framework~~
 2. ~~add color customization~~
 3. print to a text file when used on a device
-4. pretty print object types
+4. pretty print json types from server responses
 
 ### License
 The MIT License (MIT)
