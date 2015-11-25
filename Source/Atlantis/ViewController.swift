@@ -28,45 +28,73 @@ class ViewController: UIViewController {
     // init Atlantis
     Atlantis.Configuration.hasColoredLogs = true
     
+    
+    
+    
+    
+    print("\n\n\n\n\n\n\n\n\n\n\n\n")
+      
+    
+    
+    log.verbose("Hello, World!")
+    
+    
+    
+    
+    
+    print("\n\n\n\n\n\n\n\n\n\n\n\n")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
-    log.warning(null)
-    
-    log.debug(["Hello", "World!"])
-    
-    log.error(["Hello": 0])
-    
-    log.info("Hello, World!")
-    
-    log.error(error, "bad")
-    
-    longgggggggggggggggggeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrFunctionName()
-    longggggggggggggggggggggggggggggggggggggFunctionName()
-
-    promiseTest()
-    .then { log.debug($0) }
-    .error { log.error($0) }
-    
-    promiseTest2()
-    .then { log.debug($0) }
-    .error { log.error($0) }
-
-    enum x: ErrorType {
-      case HelloThisIsAnErrorType(String)
-    }
-
-    promiseTest2()
-    .then { res -> Bool in
-      throw x.HelloThisIsAnErrorType("with a string argument")
-    }
-    .then { log.tap.info($0) }
-    .error { log.error($0) }
-    
-    promiseTest2()
-    .then { res -> Bool in
-      throw NSError(domain: "an error", code: 404, userInfo: nil)
-    }
-    .then { log.tap.info($0) }
-    .error { log.error($0) }
+//    log.warning(null)
+//    
+//    log.debug(["Hello", "World!"])
+//    
+//    log.error(["Hello": 0])
+//    
+//    log.info("Hello, World!")
+//    
+//    log.error(error, "bad")
+//    
+//    longgggggggggggggggggeeeeeeeerrrrrrrrrrrrrrrrrrrrrrrFunctionName()
+//    longggggggggggggggggggggggggggggggggggggFunctionName()
+//
+//    promiseTest()
+//    .then { log.debug($0) }
+//    .error { log.error($0) }
+//    
+//    promiseTest2()
+//    .then { log.debug($0) }
+//    .error { log.error($0) }
+//
+//    enum x: ErrorType {
+//      case HelloThisIsAnErrorType(String)
+//    }
+//
+//    promiseTest2()
+//    .then { res -> Bool in
+//      throw x.HelloThisIsAnErrorType("with a string argument")
+//    }
+//    .then { log.tap.info($0) }
+//    .error { log.error($0) }
+//    
+//    promiseTest2()
+//    .then { res -> Bool in
+//      throw NSError(domain: "an error", code: 404, userInfo: nil)
+//    }
+//    .then { log.tap.info($0) }
+//    .error { log.error($0) }
   }
   
   private func longggggggggggggggggggggggggggggggggggggFunctionName() {

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23F0595296693AC70D0C90E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4784F2DA71982FFC36DE8269 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		3581488EC1F27DF4ED66A3F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4784F2DA71982FFC36DE8269 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		23F0595296693AC70D0C90E9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4784F2DA71982FFC36DE8269 /* Pods.framework */; };
+		3581488EC1F27DF4ED66A3F1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4784F2DA71982FFC36DE8269 /* Pods.framework */; };
 		EE2CCDAB1BBB6BF40068625C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2CCDAA1BBB6BF40068625C /* AppDelegate.swift */; };
 		EE2CCDAD1BBB6BF40068625C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2CCDAC1BBB6BF40068625C /* ViewController.swift */; };
 		EE2CCDB01BBB6BF40068625C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE2CCDAE1BBB6BF40068625C /* Main.storyboard */; };
@@ -16,7 +16,7 @@
 		EE2CCDB51BBB6BF40068625C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE2CCDB31BBB6BF40068625C /* LaunchScreen.storyboard */; };
 		EE2CCDC01BBB6BF40068625C /* AtlantisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2CCDBF1BBB6BF40068625C /* AtlantisTests.swift */; };
 		EE2CCDCB1BBB6BF50068625C /* AtlantisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2CCDCA1BBB6BF50068625C /* AtlantisUITests.swift */; };
-		EE2CCDD91BBB6C060068625C /* Atlantis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2CCDD81BBB6C060068625C /* Atlantis.swift */; settings = {ASSET_TAGS = (); }; };
+		EE2CCDD91BBB6C060068625C /* Atlantis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2CCDD81BBB6C060068625C /* Atlantis.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */

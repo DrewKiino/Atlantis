@@ -10,7 +10,7 @@ use_frameworks!
 
 #####################################
 
-pod 'PromiseKit', :git => 'https://github.com/mxcl/PromiseKit.git', :branch => 'changes-for-3.0'
+pod 'PromiseKit'
 
 #####################################
 # unit testing
