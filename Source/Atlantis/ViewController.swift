@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     
     
-    Atlantis.Configuration.logColors.error = Atlantis.XCodeColor.black
+    Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: <#T##UIColor#>)
     
     
     
