@@ -1,7 +1,7 @@
 
 
 # Atlantis
-*a  Swift logger framework*
+*The Swift logging framework we all needed*
 
 I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility and some key attributes that xcode's native ```print()``` function had. I took some of his code and added a couple of things and came up with this framework.
 
@@ -60,7 +60,7 @@ let doIExist: String? = nil
 log.warning(doIExist)
 ```
 
-```Atlantis``` will safely unwrap any optionals and print is as 'nil' when necessary.
+```Atlantis``` will safely unwrap any optionals and will print it as 'nil' if necessary.
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-nil.png?raw=true)
 

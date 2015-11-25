@@ -41,6 +41,8 @@ class ViewController: UIViewController {
 //
 //    log.info(arrayOfArrays)
 
+    log.debug(Dog())
+    
 //    let doIExist: String? = nil
 //    
 //    log.warning(doIExist)
@@ -52,19 +54,19 @@ class ViewController: UIViewController {
 //
 //    let addXY = log.tap.debug(add(3, 5))
     
-    func promise() -> Promise<String> {
-      return Promise { fulfill, reject in
-        // blah blah
-        fulfill("Hello from server!")
-      }
-    }
-    
-    promise()
-    .then { log.tap.info($0) }
-    .then { reply -> Void in
-    // blah blah
-    }
-    .error{ log.error($0) }
+//    func promise() -> Promise<String> {
+//      return Promise { fulfill, reject in
+//        // blah blah
+//        fulfill("Hello from server!")
+//      }
+//    }
+//    
+//    promise()
+//    .then { log.tap.info($0) }
+//    .then { reply -> Void in
+//    // blah blah
+//    }
+//    .error{ log.error($0) }
 
     
 //    log.debug(["Hello", "World!"])
