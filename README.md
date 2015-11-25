@@ -8,7 +8,7 @@ I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](ht
 
 Here's the [link](https://github.com/DrewKiino/Atlantis/blob/master/Source), right click and save ```Atlantis.swift``` and drop it anywhere in your project folder. Sorry (I know all ya'll are all about that cocoapods tipppp, once I figure that out, I'll get to that asap)
 
-So as of now, I don't really know how to create a cocoapods link using only swift files. I tried for like a whole day but I couldn't get it to work. I heard it's much easier with objective-c. So if anyone can point me to the right direction, I would greatly appreciate it. Please email me at ```andrewaquino118@yahoo.com```.
+So as of now, I don't really know how to create a cocoapods link using only swift files. I tried for like a whole day but I couldn't get it to work. I heard it's much easier with objective-c. So if anyone can point me to the right direction, I would greatly appreciate it.
 
 ## What can this do for me?
 
