@@ -144,6 +144,8 @@ promise()
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-tap-print-promise.png?raw=true)
 
+*Note*: that ```.Tap``` only takes in single inputs.
+
 ### Customization
 
 The ```Atlantis.Configuration``` houses configuration variables that allow you change the behaviour of the logger. The following behaviours can be configured and their defaults are as follows...
