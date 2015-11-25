@@ -1,7 +1,9 @@
 
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/atlantis-logo.png?raw=true)
 
-# Atlantis
 *Finally, the Swift logging framework we all needed*
+
+A light-weight logging framework written in swift.
 
 I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility and some key attributes that xcode's native ```print()``` function had. I took some of his code and added a couple of things and came up with this framework.
 
@@ -40,7 +42,7 @@ Which prints the following...
 
 *Note*: ```.None``` log type is also available as a log level configuration, use this when your app goes on production. Atlantis will skip all code execution if need be.
 
-*Note*: the logging framework doesn't print its logs in colors by default, if want to, you will have to set the configuration as early as you can preferably in the ```AppDelegate.swift```, like so...
+*Note*: the logging framework doesn't print its logs in colors by default, if you want colors, you will need to set the configuration somewhere in your code, preferably during app launch in your ```AppDelegate.swift```, like so...
 
 ```swift
 Atlantis.Configuration.hasColoredLogs = true
@@ -60,7 +62,7 @@ let doIExist: String? = nil
 log.warning(doIExist)
 ```
 
-```Atlantis``` will safely unwrap any optionals and will print it as 'nil' if necessary.
+```Atlantis``` will safely unwrap any optionals then print as 'nil' if necessary.
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-nil.png?raw=true)
 
@@ -91,7 +93,7 @@ log.info(array)
 ```swift
 let arraysOfArrays: [[Int]] = [[0, 1, 2], [3, 4], [5]]
 
-log.verbose(arrayOfArrays)
+log.info(arrayOfArrays)
 ```
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-array-of-arrays.png?raw=true)
@@ -143,7 +145,7 @@ promise()
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-tap-print-promise.png?raw=true)
 
-##### Customization
+### Customization
 
 The ```Atlantis.Configuration``` houses configuration variables that allow you change the behaviour of the logger. The following behaviours can be configured and their defaults are as follows...
 
@@ -156,7 +158,6 @@ The ```Atlantis.Configuration``` houses configuration variables that allow you c
 ```
 
 Other colors configurations include ```black, blue, darkGreen, darkGrey, lightGrey, orange, white, and whiteOnRed```
-
 
 You can even create your own colors and specify the foreground and background...
 
@@ -175,7 +176,7 @@ Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor)
 Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UIColor)
 ```
 
-####To Do
+###To Do
 1. ~~create a logging framework~~
 2. ~~add color customization~~
 3. print to a text file when used on a device
