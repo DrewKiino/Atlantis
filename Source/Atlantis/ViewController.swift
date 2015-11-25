@@ -48,9 +48,23 @@ class ViewController: UIViewController {
 //    log.debug("Hello, World", 010101, 0.001, ["Hello", "World"], ["Cat", ["Mouse", "Rat"]])
     
     
-    func add(x: Int, _ y: Int) -> Int { return x + y }
+//    func add(x: Int, _ y: Int) -> Int { return x + y }
+//
+//    let addXY = log.tap.debug(add(3, 5))
     
-    let addXY = log.tap.debug(add(3, 5))
+    func promise() -> Promise<String> {
+      return Promise { fulfill, reject in
+        // blah blah
+        fulfill("Hello from server!")
+      }
+    }
+    
+    promise()
+    .then { log.tap.info($0) }
+    .then { reply -> Void in
+    // blah blah
+    }
+    .error{ log.error($0) }
 
     
 //    log.debug(["Hello", "World!"])

@@ -3,17 +3,18 @@
 # Atlantis
 *a  Swift logger framework*
 
-I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility. I took some of his code and added a couple of things and came up with this framework.
+I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility and some key attributes that xcode's native ```print()``` function had. I took some of his code and added a couple of things and came up with this framework.
 
-#### Installation
+### Installation
 
 Download the ```Atlantis.swift``` file and drop it anywhere in your project folder. Here's the [link](https://github.com/DrewKiino/Atlantis/blob/master/Source/Atlantis/Atlantis.swift), sorry (I know all ya'll are all about that cocoapods tipppp, once I figure that out, I'll get to that asap)
 
 So as of now, I don't really know how to create a cocoapods link using only swift files. I tried for like a whole day but I couldn't get it to work. I heard it's much easier with objective-c. So if anyone can point me to the right direction, I would greatly appreciate it. Please email me at ```andrewaquino118@yahoo.com```.
 
-### What can this do for me?
+## What can this do for me?
 
-##### Differentiated logging types along with the stamp trace of source file, function name, and line number
+###  Log Levels
+This includes the stamp trace of the source file, function name, and line number.
 
 ```swift
 
@@ -37,7 +38,7 @@ Which prints the following...
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors.png?raw=true)
 
-*Note*: ```.None``` log type is also available, use this when your app goes on production. Atlantis will skip all code execution if need be.
+*Note*: ```.None``` log type is also available as a log level configuration, use this when your app goes on production. Atlantis will skip all code execution if need be.
 
 *Note*: the logging framework doesn't print its logs in colors by default, if want to, you will have to set the configuration as early as you can preferably in the ```AppDelegate.swift```, like so...
 
@@ -45,13 +46,13 @@ Which prints the following...
 Atlantis.Configuration.hasColoredLogs = true
 ```
 
-However, for you to enable colors you will have to firs download the xcode package manager [Alcatraz](http://alcatraz.io/), then after you enable it inside xcode, pull up the package manager itself and install [XCodeColors](https://github.com/robbiehanson/XcodeColors)
+However, for you to enable log colors you will have to first download the xcode package manager [Alcatraz](http://alcatraz.io/) and enable it inside xcode. Pull up the package manager afterwards and install [XCodeColors](https://github.com/robbiehanson/XcodeColors)
 
-##### Input Agnostic
+### Input Agnostic
 
 Besides printing regular data types like ```String``` or ```Int```, with ```Atlantis```, you can do the following: 
 
-* **print nil's**
+* **nil's**
 
 ```swift
 let doIExist: String? = nil
@@ -59,9 +60,11 @@ let doIExist: String? = nil
 log.warning(doIExist)
 ```
 
+```Atlantis``` will safely unwrap any optionals and print is as 'nil' when necessary.
+
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-nil.png?raw=true)
 
-* *print objects or classes*
+* **objects or classes**
 
 ```swift
 public class Dog {
@@ -73,7 +76,7 @@ log.debug(Dog())
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-dog.png?raw=true)
 
-* *print arrays*
+* **arrays**
 
 ```swift
 let array: [String] = ["Dog", "Cat"]
@@ -83,7 +86,7 @@ log.info(array)
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-array.png?raw=true)
 
-* *print arrays of arrays*
+* **arrays of arrays**
 
 ```swift
 let arraysOfArrays: [[Int]] = [[0, 1, 2], [3, 4], [5]]
@@ -93,21 +96,20 @@ log.verbose(arrayOfArrays)
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-array-of-arrays.png?raw=true)
 
-yes, it pretty prints nested arrays.
+yes, it pretty prints nested arrays ;)
 
-* *print different data types in a single input, including objects, arrays, and of course, nested types*
+* **almost anything really**
 
 ```swift
 log.debug("Hello, World", 010101, 0.001, ["Hello", "World"], ["Cat", ["Mouse", "Rat"]])
 ```
 
-```Atlantis``` will reiterate through each input and prints each one, conveniently pretty printing parsable nested types.
+```Atlantis``` will re-iterate through each input and conveniently print each one, along with pretty printing parsable nested types.
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-agnostic-types.png?raw=true)
 
-* *tap inputs before the actual inputting*
-
-using the ```.tap``` extension as seen here...
+### ```.Tap```
+An ```Atlantis``` extension that allows you to print like how you would regularly do, but will return the value of the input.
 
 ```
 func add(x: Int, _ y: Int) -> Int { return x + y }
@@ -117,14 +119,29 @@ let addXY = log.tap.debug(add(3, 5))
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-tap-print-add.png?raw=true)
 
-the normal extensions such as ```.Verbose``` etc. are also under ```.Tap```
+Normal extensions such as ```.Verbose``` etc. are also under ```.Tap```
 
-* *wait, lets do promises with ```.Tap```*
+### Compatible with ```Promises```
 
+using [PromiseKit](https://github.com/mxcl/PromiseKit) more specifically...
 
+```swift
+func promise() -> Promise<String> {
+  return Promise { fulfill, reject in
+    // blah blah
+    fulfill("Hello from server!")
+  }
+}
 
+promise()
+.then { log.tap($0) }
+.then { reply in
+  // blah blah
+}
+.catch { log.error($0) }
+```
 
-
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-tap-print-promise.png?raw=true)
 
 ##### Customization
 
