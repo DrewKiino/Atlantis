@@ -1,9 +1,4 @@
 
-```swift
-log.debug("Hello, World!")
-```
-will print, 
-![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/verbose-print.png?raw=true)
 
 # Atlantis
 *a  Swift logger framework*
@@ -13,7 +8,36 @@ I was inspired by Dave Wood's [Dave Wood](https://github.com/DaveWoodCom/XCGLogg
 ### What can this do for me?
 
 Let's start of with the basics,
-##### Differentiated logging types
+
+##### Differentiated logging types along with source file, trace, and line number
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors.png?raw=true)
+
+1. Verbose
+```swift
+log.verose("Hello, World!")
+```
+2. Info
+```swift
+log.info("Hello, World!")
+```
+3. Warning
+```swift
+log.warning("Hello, World!")
+```
+4. Error
+```swift
+log.error("Hello, World!")
+```
+5. None
+
+Note: the logging framework doesn't print in colors by default, you will have to set as early as you can (preferably in the AppDelegate) like so...
+```swift
+Atlantis.Configuration.hasColoredLogs = true
+```
+However, for you to enable colors you will have to firs download the xcode package manager [Alcatraz](http://alcatraz.io/), then after you enable it inside xcode, pull up the package manager itself and install [XCodeColors](https://github.com/robbiehanson/XcodeColors)
+
+#### 
 
 ### License
 The MIT License (MIT)

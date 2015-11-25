@@ -32,17 +32,20 @@ class ViewController: UIViewController {
     
     
     
-    print("\n\n\n\n\n\n\n\n\n\n\n\n")
-      
     
+    
+    
+    
+    
+    
+    print("\n\n\n\n\n")
     
     log.verbose("Hello, World!")
-    
-    
-    
-    
-    
-    print("\n\n\n\n\n\n\n\n\n\n\n\n")
+    log.info("Hello, World!")
+    log.warning("Hello, World!")
+    log.debug("Hello, World!")
+    log.error("Hello, World!")
+
     
     
     
