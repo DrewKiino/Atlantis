@@ -163,90 +163,90 @@ public struct Atlantis {
     
     #if os(iOS)
     public init(fg: UIColor, bg: UIColor? = nil) {
-      var redComponent: CGFloat = 0
-      var greenComponent: CGFloat = 0
-      var blueComponent: CGFloat = 0
-      var alphaComponent: CGFloat = 0
-      
-      fg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
-      self.fg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
-      if let bg = bg {
-        bg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
-        self.bg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
-      }
-      else {
-        self.bg = nil
-      }
-    }
-    #else
-    public init(fg: NSColor, bg: NSColor? = nil) {
-    if let fgColorSpaceCorrected = fg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-    self.fg = (Int(fgColorSpaceCorrected.redComponent * 255), Int(fgColorSpaceCorrected.greenComponent * 255), Int(fgColorSpaceCorrected.blueComponent * 255))
-    }
-    else {
-    self.fg = nil
-    }
+    var redComponent: CGFloat = 0
+    var greenComponent: CGFloat = 0
+    var blueComponent: CGFloat = 0
+    var alphaComponent: CGFloat = 0
     
-    if let bg = bg,
-    let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-    
-    self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+    fg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
+    self.fg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
+    if let bg = bg {
+    bg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
+    self.bg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
     }
     else {
     self.bg = nil
     }
     }
+    #else
+    public init(fg: NSColor, bg: NSColor? = nil) {
+      if let fgColorSpaceCorrected = fg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
+        self.fg = (Int(fgColorSpaceCorrected.redComponent * 255), Int(fgColorSpaceCorrected.greenComponent * 255), Int(fgColorSpaceCorrected.blueComponent * 255))
+      }
+      else {
+        self.fg = nil
+      }
+      
+      if let bg = bg,
+        let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
+          
+          self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+      }
+      else {
+        self.bg = nil
+      }
+    }
     #endif
     
     public static let red: XCodeColor = {
       return XCodeColor(fg: (255, 0, 0))
-      }()
+    }()
     
     public static let green: XCodeColor = {
       return XCodeColor(fg: (0, 255, 0))
-      }()
+    }()
     
     public static let blue: XCodeColor = {
       // actual blue is 0, 0, 255
       // dodger blue
       return XCodeColor(fg: (30, 144, 255))
-      }()
+    }()
     
     public static let black: XCodeColor = {
       return XCodeColor(fg: (0, 0, 0))
-      }()
+    }()
     
     public static let white: XCodeColor = {
       return XCodeColor(fg: (255, 255, 255))
-      }()
+    }()
     
     public static let lightGrey: XCodeColor = {
       return XCodeColor(fg: (211, 211, 211))
-      }()
+    }()
     
     public static let darkGrey: XCodeColor = {
       return XCodeColor(fg: (169, 169, 169))
-      }()
+    }()
     
     public static let orange: XCodeColor = {
       return XCodeColor(fg: (255, 165, 0))
-      }()
+    }()
     
     public static let whiteOnRed: XCodeColor = {
       return XCodeColor(fg: (255, 255, 255), bg: (255, 0, 0))
-      }()
+    }()
     
     public static let darkGreen: XCodeColor = {
       return XCodeColor(fg: (0, 128, 0))
-      }()
+    }()
     
     public static let purple: XCodeColor = {
       return XCodeColor(fg: (160, 32, 240))
-      }()
+    }()
     
     public static let yellow: XCodeColor = {
       return XCodeColor(fg: (255, 255, 0))
-      }()
+    }()
   }
   
   public struct Logger {
@@ -255,6 +255,8 @@ public struct Atlantis {
     private typealias closure = () -> Void
     private typealias void = Void
     private static var maxCharCount: Int = 0
+    
+    public init() {}
     
     private struct LogSettings {
       
@@ -496,16 +498,16 @@ public struct Atlantis {
       
       var whitespace: String = ""
       
-      var char = 0
-      
+      var i = 0
       switch logLevel {
-      case .Info: char = 3; break
-      case .Warning: char = 1; break
-      case .Error: char = 4; break
+      case .Info: i = 3; break
+      case .Error: i = 4; break
       default: break
       }
       
-      for var i = char; i < maxCharCount - charCount; i++ { whitespace += " " }
+      for var j = i; j < maxCharCount - charCount; j++ {
+        whitespace += " "
+      }
       
       
       let string: String = startString + whitespace + endString
