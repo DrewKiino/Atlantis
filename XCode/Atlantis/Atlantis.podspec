@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Source", "Source/**/*.{swift,h,m}"
+  s.source_files  = "Source", "https://github.com/DrewKiino/Atlantis/tree/master/XCode/Atlantis/Atlantis/Source/**/*.{swift,h,m}"
   s.exclude_files = "Source/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
