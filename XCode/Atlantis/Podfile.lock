@@ -10,7 +10,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Atlantis:
-    :commit: 313e9624598b13f34c2e1dd324e0a1aaa16d5349
+    :commit: 4c84464d23feda7c821125f7c26bf2a585e658a6
     :git: https://github.com/DrewKiino/Atlantis.git
 
 SPEC CHECKSUMS:
