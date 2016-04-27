@@ -1,0 +1,21 @@
+#Podfile
+
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.4'
+
+link_with 'Atlantis', 'AtlantisTests'
+
+use_frameworks!
+
+#####################################
+
+
+#####################################
+# unit testing
+
+target 'AtlantisTests' do
+
+end
+
+#####################################
