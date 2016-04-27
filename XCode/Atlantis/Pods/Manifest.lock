@@ -1,1 +1,19 @@
+PODS:
+  - Atlantis (0.0.1)
+
+DEPENDENCIES:
+  - Atlantis (from `https://github.com/DrewKiino/Atlantis.git`)
+
+EXTERNAL SOURCES:
+  Atlantis:
+    :git: https://github.com/DrewKiino/Atlantis.git
+
+CHECKOUT OPTIONS:
+  Atlantis:
+    :commit: ff1d9a82c5e9772a81ab43d55b3fee7d5c8c7e55
+    :git: https://github.com/DrewKiino/Atlantis.git
+
+SPEC CHECKSUMS:
+  Atlantis: 91d6095ef40b5f5f655b90b2d2ef4b7f80010364
+
 COCOAPODS: 0.39.0

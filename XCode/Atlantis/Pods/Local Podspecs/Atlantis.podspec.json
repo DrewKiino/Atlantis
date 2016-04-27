@@ -1,0 +1,20 @@
+{
+  "name": "Atlantis",
+  "version": "0.0.1",
+  "summary": "A versatile and type-agnostic Swift logging framework.",
+  "description": "",
+  "homepage": "https://github.com/DrewKiino/Atlantis",
+  "license": "MIT",
+  "authors": {
+    "Andrew Aquino": "andrew@totemv.com"
+  },
+  "source": {
+    "git": "https://github.com/DrewKiino/Atlantis",
+    "tag": "0.0.1"
+  },
+  "source_files": [
+    "Source",
+    "https://github.com/DrewKiino/Atlantis/tree/master/XCode/Atlantis/Atlantis/Source/**/*.{swift,h,m}"
+  ],
+  "exclude_files": "Source/Exclude"
+}

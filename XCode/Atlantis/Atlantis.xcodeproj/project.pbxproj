@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		788C14DF3F36E402B4266268 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E334769E1055A05C82E3476D /* Pods.framework */; };
+		9120528C1D3B83C5F763613F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E334769E1055A05C82E3476D /* Pods.framework */; };
 		EE39E8421CD051B300751CD0 /* Source in Resources */ = {isa = PBXBuildFile; fileRef = EE39E8411CD051B300751CD0 /* Source */; };
 		EEBD2F721CD04D860001B227 /* Atlantis.h in Headers */ = {isa = PBXBuildFile; fileRef = EEBD2F711CD04D860001B227 /* Atlantis.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEBD2F791CD04D860001B227 /* Atlantis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBD2F6E1CD04D860001B227 /* Atlantis.framework */; };
@@ -24,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6E1268049057F95B3D20215C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E334769E1055A05C82E3476D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE39E8411CD051B300751CD0 /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Source; sourceTree = "<group>"; };
 		EEBD2F6E1CD04D860001B227 /* Atlantis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atlantis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBD2F711CD04D860001B227 /* Atlantis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atlantis.h; sourceTree = "<group>"; };
@@ -31,6 +35,7 @@
 		EEBD2F781CD04D860001B227 /* AtlantisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtlantisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBD2F7D1CD04D860001B227 /* AtlantisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtlantisTests.swift; sourceTree = "<group>"; };
 		EEBD2F7F1CD04D860001B227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F342C0A2AF7E66EA278263EE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				788C14DF3F36E402B4266268 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,18 +52,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEBD2F791CD04D860001B227 /* Atlantis.framework in Frameworks */,
+				9120528C1D3B83C5F763613F /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B08F6D43FF8796E96E19442 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E334769E1055A05C82E3476D /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B9490A845D23973875F36B92 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E1268049057F95B3D20215C /* Pods.debug.xcconfig */,
+				F342C0A2AF7E66EA278263EE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EEBD2F641CD04D860001B227 = {
 			isa = PBXGroup;
 			children = (
 				EEBD2F701CD04D860001B227 /* Atlantis */,
 				EEBD2F7C1CD04D860001B227 /* AtlantisTests */,
 				EEBD2F6F1CD04D860001B227 /* Products */,
+				B9490A845D23973875F36B92 /* Pods */,
+				3B08F6D43FF8796E96E19442 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,10 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEBD2F821CD04D860001B227 /* Build configuration list for PBXNativeTarget "Atlantis" */;
 			buildPhases = (
+				662F1B722D9ACF8490A2BA05 /* Check Pods Manifest.lock */,
 				EEBD2F691CD04D860001B227 /* Sources */,
 				EEBD2F6A1CD04D860001B227 /* Frameworks */,
 				EEBD2F6B1CD04D860001B227 /* Headers */,
 				EEBD2F6C1CD04D860001B227 /* Resources */,
+				0140B137EBDC80AE08B65ABF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEBD2F851CD04D860001B227 /* Build configuration list for PBXNativeTarget "AtlantisTests" */;
 			buildPhases = (
+				F174C5211D463C271CDB11B3 /* Check Pods Manifest.lock */,
 				EEBD2F741CD04D860001B227 /* Sources */,
 				EEBD2F751CD04D860001B227 /* Frameworks */,
 				EEBD2F761CD04D860001B227 /* Resources */,
+				5EA88743C7040D18065F41F5 /* Embed Pods Frameworks */,
+				05E221413349998ECF66175E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,6 +223,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0140B137EBDC80AE08B65ABF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		05E221413349998ECF66175E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5EA88743C7040D18065F41F5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		662F1B722D9ACF8490A2BA05 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F174C5211D463C271CDB11B3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EEBD2F691CD04D860001B227 /* Sources */ = {
@@ -311,6 +420,7 @@
 		};
 		EEBD2F831CD04D860001B227 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E1268049057F95B3D20215C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -329,6 +439,7 @@
 		};
 		EEBD2F841CD04D860001B227 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F342C0A2AF7E66EA278263EE /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
@@ -346,6 +457,7 @@
 		};
 		EEBD2F861CD04D860001B227 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E1268049057F95B3D20215C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AtlantisTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -356,6 +468,7 @@
 		};
 		EEBD2F871CD04D860001B227 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F342C0A2AF7E66EA278263EE /* Pods.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = AtlantisTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
