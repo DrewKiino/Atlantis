@@ -188,7 +188,7 @@ Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UI
 4. pretty print json types from server responses
 
 ###Special Thanks
-Once again, many thanks to [Dave Wood](https://www.cerebralgardens.com/) for the inspiration and solid code base.
+Once again, many thanks to [Dave Wood](https://www.cerebralgardens.com/) for the inspiration and a starting code base.
 
 ### License
 The MIT License (MIT)
