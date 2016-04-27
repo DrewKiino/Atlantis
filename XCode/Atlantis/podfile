@@ -10,6 +10,8 @@ use_frameworks!
 
 #####################################
 
+pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git'
+
 
 #####################################
 # unit testing
