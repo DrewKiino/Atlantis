@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE7301B81CD04EA200C591EA /* Atlantis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7301B71CD04EA200C591EA /* Atlantis.swift */; };
+		EE39E8421CD051B300751CD0 /* Source in Resources */ = {isa = PBXBuildFile; fileRef = EE39E8411CD051B300751CD0 /* Source */; };
 		EEBD2F721CD04D860001B227 /* Atlantis.h in Headers */ = {isa = PBXBuildFile; fileRef = EEBD2F711CD04D860001B227 /* Atlantis.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EEBD2F791CD04D860001B227 /* Atlantis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEBD2F6E1CD04D860001B227 /* Atlantis.framework */; };
 		EEBD2F7E1CD04D860001B227 /* AtlantisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBD2F7D1CD04D860001B227 /* AtlantisTests.swift */; };
@@ -24,7 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EE7301B71CD04EA200C591EA /* Atlantis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atlantis.swift; path = ../../../Atlantis.swift; sourceTree = "<group>"; };
+		EE39E8411CD051B300751CD0 /* Source */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Source; sourceTree = "<group>"; };
 		EEBD2F6E1CD04D860001B227 /* Atlantis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atlantis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEBD2F711CD04D860001B227 /* Atlantis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Atlantis.h; sourceTree = "<group>"; };
 		EEBD2F731CD04D860001B227 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,14 +52,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EE7301B61CD04E8B00C591EA /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				EE7301B71CD04EA200C591EA /* Atlantis.swift */,
-			);
-			name = Source;
-			sourceTree = "<group>";
-		};
 		EEBD2F641CD04D860001B227 = {
 			isa = PBXGroup;
 			children = (
@@ -81,7 +73,7 @@
 		EEBD2F701CD04D860001B227 /* Atlantis */ = {
 			isa = PBXGroup;
 			children = (
-				EE7301B61CD04E8B00C591EA /* Source */,
+				EE39E8411CD051B300751CD0 /* Source */,
 				EEBD2F711CD04D860001B227 /* Atlantis.h */,
 				EEBD2F731CD04D860001B227 /* Info.plist */,
 			);
@@ -188,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE39E8421CD051B300751CD0 /* Source in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +198,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE7301B81CD04EA200C591EA /* Atlantis.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
