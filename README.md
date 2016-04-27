@@ -14,7 +14,7 @@ pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git'
 
 Then do a pod install, and voila!
 
-## What can this do for me?
+## What makes Atlantis different from the rest?
 
 ###  Log Levels
 This includes the stamp trace of the source file, function name, and line number.
@@ -186,6 +186,9 @@ Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UI
 2. ~~add color customization~~
 3. print to a text file when used on a device
 4. pretty print json types from server responses
+
+###Special Thanks
+Once again, many thanks to [Dave Wood](https://www.cerebralgardens.com/) for the inspiration and solid code base.
 
 ### License
 The MIT License (MIT)
