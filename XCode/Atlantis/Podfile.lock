@@ -1,5 +1,5 @@
 PODS:
-  - Atlantis (0.0.1)
+  - Atlantis (1.0)
 
 DEPENDENCIES:
   - Atlantis (from `https://github.com/DrewKiino/Atlantis.git`)
@@ -10,10 +10,10 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Atlantis:
-    :commit: ff1d9a82c5e9772a81ab43d55b3fee7d5c8c7e55
+    :commit: 313e9624598b13f34c2e1dd324e0a1aaa16d5349
     :git: https://github.com/DrewKiino/Atlantis.git
 
 SPEC CHECKSUMS:
-  Atlantis: 91d6095ef40b5f5f655b90b2d2ef4b7f80010364
+  Atlantis: 4c7e9eafc96245f0a398c661d0b77191dd975b7d
 
 COCOAPODS: 0.39.0
