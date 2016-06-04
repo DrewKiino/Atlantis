@@ -81,9 +81,9 @@
 			children = (
 				EEBD2F701CD04D860001B227 /* Atlantis */,
 				EEBD2F7C1CD04D860001B227 /* AtlantisTests */,
-				EEBD2F6F1CD04D860001B227 /* Products */,
-				B9490A845D23973875F36B92 /* Pods */,
 				3B08F6D43FF8796E96E19442 /* Frameworks */,
+				B9490A845D23973875F36B92 /* Pods */,
+				EEBD2F6F1CD04D860001B227 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +99,9 @@
 		EEBD2F701CD04D860001B227 /* Atlantis */ = {
 			isa = PBXGroup;
 			children = (
-				EE39E8411CD051B300751CD0 /* Source */,
 				EEBD2F711CD04D860001B227 /* Atlantis.h */,
 				EEBD2F731CD04D860001B227 /* Info.plist */,
+				EE39E8411CD051B300751CD0 /* Source */,
 			);
 			path = Atlantis;
 			sourceTree = "<group>";
