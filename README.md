@@ -9,7 +9,7 @@ Atlantis is a debug logger framework built in Swift. I was inspired by [Dave Woo
 Add this to your podfile...
 
 ```swift
-pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git'
+pod 'Atlantis'
 ```
 
 Then do a pod install, and voila!
