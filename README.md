@@ -2,7 +2,7 @@
 
 # A swift logging framework.
 
-I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility and some key attributes that xcode's native ```print()``` function had. I took some of his code and added a couple of things and came up with this framework. If you liked this framework, please star this repo! It would definitely motivate me to keep adding. Also, anyone willing to contribute please let me know at ```andrew@totemv.com```.
+Atlantis is a debug logger framework built in Swift. I was inspired by [Dave Wood's](https://www.cerebralgardens.com/) [XCGLogger](https://github.com/DaveWoodCom/XCGLogger), but felt that it was lacking in utility and some key attributes that xcode's native ```print()``` function had. I took some of his code and added a couple of things and came up with this framework. If you liked this framework, please star this repo! It would definitely motivate me to keep adding. Also, anyone willing to contribute please let me know at ```andrew@totemv.com```.
 
 ### Installation
 
