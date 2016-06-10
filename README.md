@@ -1,6 +1,6 @@
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/atlantis-logo.png?raw=true)
 
-![GitHub Logo](atlantis-screenshot)
+![GitHub Logo](atlantis-screenshot.png)
 
 # A swift logging framework.
 
