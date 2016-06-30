@@ -295,7 +295,7 @@ public struct Atlantis {
     
     public struct Tap {
       
-      public func verbose<T>(arg: T, functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) -> T {
+      public func verbose<T>(arg: T, functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) -> T {
         dispatch_async(Singleton.LogQueue) {
           let logSettings = LogSettings(logLevel: .Verbose, functionName,fileName, lineNumber)
           if Logger.acceptableLogLevel(logSettings) {
@@ -305,7 +305,7 @@ public struct Atlantis {
         return arg
       }
       
-      public func info<T>(arg: T, functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) -> T {
+      public func info<T>(arg: T, functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) -> T {
         dispatch_async(Singleton.LogQueue) {
           let logSettings = LogSettings(logLevel: .Info, functionName,fileName, lineNumber)
           if Logger.acceptableLogLevel(logSettings) {
@@ -315,7 +315,7 @@ public struct Atlantis {
         return arg
       }
       
-      public func warning<T>(arg: T, functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) -> T {
+      public func warning<T>(arg: T, functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) -> T {
         dispatch_async(Singleton.LogQueue) {
           let logSettings = LogSettings(logLevel: .Warning, functionName,fileName, lineNumber)
           if Logger.acceptableLogLevel(logSettings) {
@@ -325,7 +325,7 @@ public struct Atlantis {
         return arg
       }
       
-      public func debug<T>(arg: T, functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) -> T {
+      public func debug<T>(arg: T, functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) -> T {
         dispatch_async(Singleton.LogQueue) {
           let logSettings = LogSettings(logLevel: .Debug, functionName,fileName, lineNumber)
           if Logger.acceptableLogLevel(logSettings) {
@@ -335,7 +335,7 @@ public struct Atlantis {
         return arg
       }
       
-      public func error<T>(arg: T, functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) -> T {
+      public func error<T>(arg: T, functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) -> T {
         dispatch_async(Singleton.LogQueue) {
           let logSettings = LogSettings(logLevel: .Error, functionName,fileName, lineNumber)
           if Logger.acceptableLogLevel(logSettings) {
@@ -346,7 +346,7 @@ public struct Atlantis {
       }
     }
     
-    public func verbose<T>(args: T?..., functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) {
+    public func verbose<T>(args: T?..., functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) {
       dispatch_async(logQueue) {
         let logSettings = LogSettings(logLevel: .Verbose, functionName,fileName, lineNumber)
         if Logger.acceptableLogLevel(logSettings) {
@@ -357,7 +357,7 @@ public struct Atlantis {
       }
     }
     
-    public func info<T>(args: T?..., functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) {
+    public func info<T>(args: T?..., functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) {
       dispatch_async(logQueue) {
         let logSettings = LogSettings(logLevel: .Info, functionName,fileName, lineNumber)
         if Logger.acceptableLogLevel(logSettings) {
@@ -368,7 +368,7 @@ public struct Atlantis {
       }
     }
     
-    public func warning<T>(args: T?..., functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) {
+    public func warning<T>(args: T?..., functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) {
       dispatch_async(logQueue) {
         let logSettings = LogSettings(logLevel: .Warning, functionName,fileName, lineNumber)
         if Logger.acceptableLogLevel(logSettings) {
@@ -379,7 +379,7 @@ public struct Atlantis {
       }
     }
     
-    public func debug<T>(args: T?..., functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) {
+    public func debug<T>(args: T?..., functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) {
       dispatch_async(logQueue) {
         let logSettings = LogSettings(logLevel: .Debug, functionName,fileName, lineNumber)
         if Logger.acceptableLogLevel(logSettings) {
@@ -390,7 +390,7 @@ public struct Atlantis {
       }
     }
     
-    public func error<T>(args: T?..., functionName: String = __FUNCTION__, fileName: String = __FILE__, lineNumber: Int = __LINE__) {
+    public func error<T>(args: T?..., functionName: String = #function, fileName: String = #file, lineNumber: Int = #line) {
       dispatch_async(logQueue) {
         let logSettings = LogSettings(logLevel: .Error, functionName,fileName, lineNumber)
         if Logger.acceptableLogLevel(logSettings) {

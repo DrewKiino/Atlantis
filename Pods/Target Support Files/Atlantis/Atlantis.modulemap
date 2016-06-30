@@ -1,6 +1,0 @@
-framework module Atlantis {
-  umbrella header "Atlantis-umbrella.h"
-
-  export *
-  module * { export * }
-}
