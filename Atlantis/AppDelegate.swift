@@ -8,6 +8,8 @@
 
 import UIKit
 
+public let log = Atlantis.Logger()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

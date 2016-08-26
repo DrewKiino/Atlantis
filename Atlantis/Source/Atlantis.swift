@@ -101,7 +101,17 @@ public struct Atlantis {
     
     public static var hasColoredLogs: Bool = false
     
+    public static var hasColoredPrints: Bool = false
+    
     public static var showExtraInfo: Bool = true
+    
+    public static var filteredErrorCodes: [Int] = [-999]
+    
+    public static var highlightsErrors: Bool = false
+    
+    public static var coloredLogLevels: [Atlantis.LogLevel] = [.Verbose, .Info, .Warning, .Debug, .Error]
+    
+    public static var alignmentThreshold: Int = 5
   }
   
   private struct Singleton {
@@ -189,8 +199,8 @@ public struct Atlantis {
       
       if let bg = bg,
         let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-          
-          self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+        
+        self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
       }
       else {
         self.bg = nil
@@ -255,6 +265,7 @@ public struct Atlantis {
     private typealias closure = () -> Void
     private typealias void = Void
     private static var maxCharCount: Int = 0
+    private static var smallerCountOccurances: Int = 0
     
     public init() {}
     
@@ -281,7 +292,7 @@ public struct Atlantis {
             name = string
           }
           let string = "[\(name)/\(functionName)/line:\(lineNumber)]"
-          return string + "\t"
+          return string + " "
         }
         return ""
       }
@@ -413,16 +424,38 @@ public struct Atlantis {
       if Configuration.hasColoredLogs {
         switch logLevel {
         case .Verbose:
-          return Configuration.logColors._verbose.whiteBG().format()
+          if Atlantis.Configuration.coloredLogLevels.contains(.Verbose) {
+            return Configuration.logColors._verbose.whiteBG().format()
+          }
+          break
         case .Info:
-          return Configuration.logColors._info.whiteBG().format()
+          if Atlantis.Configuration.coloredLogLevels.contains(.Info) {
+            return Configuration.logColors._info.whiteBG().format()
+          }
+          break
         case .Warning:
-          return Configuration.logColors._warning.whiteBG().format()
+          if Atlantis.Configuration.coloredLogLevels.contains(.Warning) {
+            return Configuration.logColors._warning.whiteBG().format()
+          }
+          break
         case .Debug:
-          return Configuration.logColors._debug.whiteBG().format()
+          if Atlantis.Configuration.coloredLogLevels.contains(.Debug) {
+            return Configuration.logColors._debug.whiteBG().format()
+          }
+          break
+        case .Error:
+          if Atlantis.Configuration.coloredLogLevels.contains(.Error) {
+            return Configuration.logColors._error.whiteBG().format()
+          }
+          break
+        case .None:
+          break
+        }
+      } else if Configuration.highlightsErrors {
+        switch logLevel {
         case .Error:
           return Configuration.logColors._error.whiteBG().format()
-        case .None:
+        default:
           break
         }
       }
@@ -465,6 +498,22 @@ public struct Atlantis {
       case .Some(is NSArray): jsonString = toPrettyJSONString(x as! NSArray) ?? "\n\(x!)"; break
       case .Some(is NSDictionary): jsonString = toPrettyJSONString(x as! NSDictionary) ?? "\n\(x!)"; break
       case .Some(is [String: AnyObject]): jsonString = toPrettyJSONString(x as! [String: AnyObject]) ?? "\n\(x!)"; break
+      case .Some(is NSError):
+        let error = x as! NSError
+        
+        // filter out errors based in filtered error code configurations
+        if Atlantis.Configuration.filteredErrorCodes.contains(error.code) { return }
+        
+        let properties: [String: AnyObject] = [
+          "domain": error.domain,
+          "code": error.code,
+          "localizedDescription": error.localizedDescription,
+          "userInfo": error.userInfo
+        ]
+        
+        jsonString = toPrettyJSONString(properties)
+        
+        break
       default: break
       }
       var unwrap: Any = x ?? "nil"
@@ -475,10 +524,10 @@ public struct Atlantis {
       let level = getLogLevelString(logLevel)
       let source = logSettings.sourceString()
       let string = "\(unwrap)"
-      let coloredString: String = color + string + reset
+      let coloredString: String = Atlantis.Configuration.hasColoredPrints ? (color + string + reset) : string
       let log: String = "\(color)\(level)\(reset)\(source)"
       
-      let prettyLog: String = calculateLegibleWhitespace(log, endString: coloredString, logLevel: logLevel)
+      let prettyLog: String = calculateLegibleWhitespace(log, startString: "\(level)\(source)", endString: coloredString, logLevel: logLevel)
       
       dispatch_async(dispatch_get_main_queue()) { print(prettyLog) }
     }
@@ -491,27 +540,33 @@ public struct Atlantis {
       return string
     }
     
-    private static func calculateLegibleWhitespace(startString: String, endString: String, logLevel: LogLevel) -> String {
+    private static func calculateLegibleWhitespace(log: String, startString: String, endString: String, logLevel: LogLevel) -> String {
       
-      let charCount = startString.characters.count
+      let charCount = startString.debugDescription.characters.count
+      
+      
       maxCharCount = maxCharCount > charCount ? maxCharCount : charCount
       
-      var whitespace: String = ""
+      smallerCountOccurances = (charCount < maxCharCount) ? (smallerCountOccurances + 1) : 0
       
-      var i = 0
-      switch logLevel {
-      case .Info: i = 3; break
-      case .Error: i = 4; break
-      default: break
+      if smallerCountOccurances > Atlantis.Configuration.alignmentThreshold {
+        
+        return log + endString
+        
+      } else {
+        
+        var whitespace: String = ""
+        
+        if maxCharCount - charCount > 0 {
+          for _ in 0 ..< maxCharCount - charCount {
+            whitespace += " "
+          }
+        }
+        
+        let string: String = log + whitespace + endString
+        
+        return string
       }
-      
-      for var j = i; j < maxCharCount - charCount; j++ {
-        whitespace += " "
-      }
-      
-      
-      let string: String = startString + whitespace + endString
-      return string
     }
   }
 }
