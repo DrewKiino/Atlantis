@@ -495,6 +495,14 @@ public struct Atlantis {
       let logLevel = logSettings.logLevel
       var jsonString: String? = nil
       switch x {
+      case .Some(is String): break
+      case .Some(is [String]): jsonString = toPrettyJSONString(x as! [String]) ?? "\n\(x!)"; break
+      case .Some(is Int): break
+      case .Some(is [Int]): jsonString = toPrettyJSONString(x as! [Int]) ?? "\n\(x!)"; break
+      case .Some(is Double): break
+      case .Some(is [Double]): jsonString = toPrettyJSONString(x as! [Double]) ?? "\n\(x!)"; break
+      case .Some(is Float): break
+      case .Some(is [Float]): jsonString = toPrettyJSONString(x as! [Float]) ?? "\n\(x!)"; break
       case .Some(is NSArray):
         let array = x as! NSArray
         
@@ -544,7 +552,12 @@ public struct Atlantis {
         jsonString = toPrettyJSONString(properties)
         
         break
-      case .Some(is NSObject): jsonString = toPrettyJSONString(NSObject.reflect(x as! NSObject)); break
+      case .Some(is NSObject):
+        jsonString = toPrettyJSONString(NSObject.reflect(x as! NSObject))
+        break
+      case .Some(is Any):
+        jsonString = toPrettyJSONString(NSObject.reflect(x!))
+        break
       default: break
       }
       
@@ -567,7 +580,7 @@ public struct Atlantis {
     private static func addDash(x: Any) -> String {
       let string = "\(x)"
       if Configuration.showExtraInfo {
-        return "- " + string
+        return "- " + (string.isEmpty ? "empty" : string)
       }
       return string
     }
