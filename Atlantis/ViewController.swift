@@ -20,12 +20,17 @@ class ViewController: UIViewController {
     Atlantis.Configuration.hasColoredLogs = true
     Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
     
-    let user = User()
-    user.age = 24
-    user.name = "Cindy"
-    user.id = "123345"
+    let user1 = User()
+    user1.age = 24
+    user1.name = "Cindy"
+    user1.id = "123345"
     
-    log.debug(user)
+    let user2 = User()
+    user2.age = 24
+    user2.name = "Cindy"
+    user2.id = "123345"
+    
+    log.debug([user1, user2, 1, "Hello"])
     
 //    let error = NSError(domain: "Hello, World!", code: 404, userInfo: nil)
 //    let error2 = NSError(domain: "Hello, World!", code: 404, userInfo: ["Hello": "World", "Number": 0])

@@ -495,7 +495,37 @@ public struct Atlantis {
       let logLevel = logSettings.logLevel
       var jsonString: String? = nil
       switch x {
-      case .Some(is NSArray): jsonString = toPrettyJSONString(x as! NSArray) ?? "\n\(x!)"; break
+      case .Some(is NSArray):
+        let array = x as! NSArray
+        
+        let dictionary: [AnyObject!] = array.map { value -> AnyObject? in
+          
+          // strings
+          if let value = value as? String { return value }
+          else  if let value = value as? [String] { return value }
+            
+            // numbers
+          else if let value = value as? Int { return value }
+          else if let value = value as? [Int] { return value }
+          else if let value = value as? Float { return value }
+          else if let value = value as? [Float] { return value }
+          else if let value = value as? Double { return value }
+          else if let value = value as? [Double] { return value }
+            
+            // booleans
+          else if let value = value as? Bool { return value }
+            
+            // dictionaries
+          else if let value = value as? [String: AnyObject] { return value }
+            
+            // classes
+          else if let value = value as? Any { return NSObject.reflect(value) }
+          return nil
+        }.filter { $0 != nil }.map { $0! }
+        
+        jsonString = toPrettyJSONString(dictionary) ?? "\n\(x!)"
+        
+        break
       case .Some(is NSDictionary): jsonString = toPrettyJSONString(x as! NSDictionary) ?? "\n\(x!)"; break
       case .Some(is [String: AnyObject]): jsonString = toPrettyJSONString(x as! [String: AnyObject]) ?? "\n\(x!)"; break
       case .Some(is NSError):
