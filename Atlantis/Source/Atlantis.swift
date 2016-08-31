@@ -486,7 +486,7 @@ public struct Atlantis {
             return "\n" + string
           }
         }
-        throw NSError(domain: "", code: 404, userInfo: nil)
+        throw NSError(domain: "unable to parse json object", code: 400, userInfo: nil)
       }
       catch { return nil }
     }
@@ -514,8 +514,10 @@ public struct Atlantis {
         jsonString = toPrettyJSONString(properties)
         
         break
+      case .Some(is NSObject): jsonString = toPrettyJSONString(NSObject.reflect(x as! NSObject)); break
       default: break
       }
+      
       var unwrap: Any = x ?? "nil"
       unwrap = jsonString ?? addDash(unwrap)
       
@@ -568,5 +570,48 @@ public struct Atlantis {
         return string
       }
     }
+  }
+}
+
+extension NSObject {
+  
+  private class func echo<T: NSObject>(dictionary: [String: AnyObject]?, template: T) -> T? {
+    if let dictionary = dictionary, template = template as? T {
+      Mirror(reflecting: template).children.forEach { label, value in
+        if let label = label, value = dictionary[label] {
+          template.setValue(value, forKey: label)
+        }
+      }
+      if let template = template as? T { return template }
+    }
+    return nil
+  }
+  
+  private class func reflect(object: Any) -> [String: AnyObject] {
+    
+    var dictionary: [String: AnyObject] = [:]
+    
+    Mirror(reflecting: object).children.forEach { label, value in
+      
+      // strings
+      if let key = label, value = value as? String { dictionary.updateValue(value, forKey: key) }
+      else  if let key = label, value = value as? [String] { dictionary.updateValue(value, forKey: key) }
+        
+        // numbers
+      else if let key = label, value = value as? Int { dictionary.updateValue(value, forKey: key) }
+      else if let key = label, value = value as? [Int] { dictionary.updateValue(value, forKey: key) }
+      else if let key = label, value = value as? Float { dictionary.updateValue(value, forKey: key) }
+      else if let key = label, value = value as? [Float] { dictionary.updateValue(value, forKey: key) }
+      else if let key = label, value = value as? Double { dictionary.updateValue(value, forKey: key) }
+      else if let key = label, value = value as? [Double] { dictionary.updateValue(value, forKey: key) }
+        
+        // booleans
+      else if let key = label, value = value as? Bool { dictionary.updateValue(value, forKey: key) }
+        
+        // dictionaries
+      else if let key = label, value = value as? [String: AnyObject] { dictionary.updateValue(value, forKey: key) }
+    }
+    
+    return dictionary
   }
 }

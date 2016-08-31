@@ -20,34 +20,41 @@ class ViewController: UIViewController {
     Atlantis.Configuration.hasColoredLogs = true
     Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
     
-    let error = NSError(domain: "Hello, World!", code: 404, userInfo: nil)
-    let error2 = NSError(domain: "Hello, World!", code: 404, userInfo: ["Hello": "World", "Number": 0])
-    let error3 = NSError(domain: "Hello, World!", code: -999, userInfo: nil)
+    let user = User()
+    user.age = 24
+    user.name = "Cindy"
+    user.id = "123345"
     
-    log.error(error)
-    log.error(error2)
-    log.error(error3)
+    log.debug(user)
     
-    log.verbose(string)
-    log.info(string)
-    log.warning(string)
-    log.debug(string)
-    log.error(string)
-    
-    aaaaaaafseaelieshfashif()
-    faeoifhieahflsfjseifseilfjiasefjlasej()
-    faeoifhie()
-    aaaaaaafseaelieshfashif()
-    faeoifhie()
-    awfawfawfawfaeoifhieahflsfjseifseilfjiasefjlasej()
-    aaaaaaafseaelieshfashif()
-    aaaaaaafseaelieshfashif()
-    
-    log.verbose(string)
-    log.info(string)
-    log.warning(string)
-    log.debug(string)
-    log.error(string)
+//    let error = NSError(domain: "Hello, World!", code: 404, userInfo: nil)
+//    let error2 = NSError(domain: "Hello, World!", code: 404, userInfo: ["Hello": "World", "Number": 0])
+//    let error3 = NSError(domain: "Hello, World!", code: -999, userInfo: nil)
+//    
+//    log.error(error)
+//    log.error(error2)
+//    log.error(error3)
+//    
+//    log.verbose(string)
+//    log.info(string)
+//    log.warning(string)
+//    log.debug(string)
+//    log.error(string)
+//    
+//    aaaaaaafseaelieshfashif()
+//    faeoifhieahflsfjseifseilfjiasefjlasej()
+//    faeoifhie()
+//    aaaaaaafseaelieshfashif()
+//    faeoifhie()
+//    awfawfawfawfaeoifhieahflsfjseifseilfjiasefjlasej()
+//    aaaaaaafseaelieshfashif()
+//    aaaaaaafseaelieshfashif()
+//    
+//    log.verbose(string)
+//    log.info(string)
+//    log.warning(string)
+//    log.debug(string)
+//    log.error(string)
   }
 
   override func didReceiveMemoryWarning() {
@@ -71,4 +78,26 @@ class ViewController: UIViewController {
     log.warning(string)
   }
 }
+
+
+public class User: NSObject {
+  public var name: String?
+  public var id: String?
+  public var age: Int?
+}
+
+public class User2 {
+  public var name: String?
+  public var id: String?
+  public var age: Int?
+}
+
+
+
+
+
+
+
+
+
 
