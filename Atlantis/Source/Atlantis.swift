@@ -481,7 +481,7 @@ public struct Atlantis {
     private static func toPrettyJSONString(object: AnyObject) -> String? {
       do {
         if NSJSONSerialization.isValidJSONObject(object) {
-          let data = try NSJSONSerialization.dataWithJSONObject(object, options: NSJSONWritingOptions.PrettyPrinted)
+          let data = try NSJSONSerialization.dataWithJSONObject(object, options: .PrettyPrinted)
           if let string = NSString(data: data, encoding: NSUTF8StringEncoding) as? String {
             return "\n" + string
           }
@@ -495,47 +495,12 @@ public struct Atlantis {
       let logLevel = logSettings.logLevel
       var jsonString: String? = nil
       switch x {
-      case .Some(is String): break
-      case .Some(is [String]): jsonString = toPrettyJSONString(x as! [String]) ?? "\n\(x!)"; break
-      case .Some(is Int): break
-      case .Some(is [Int]): jsonString = toPrettyJSONString(x as! [Int]) ?? "\n\(x!)"; break
-      case .Some(is Double): break
-      case .Some(is [Double]): jsonString = toPrettyJSONString(x as! [Double]) ?? "\n\(x!)"; break
-      case .Some(is Float): break
-      case .Some(is [Float]): jsonString = toPrettyJSONString(x as! [Float]) ?? "\n\(x!)"; break
-      case .Some(is NSArray):
-        let array = x as! NSArray
-        
-        let dictionary: [AnyObject!] = array.map { value -> AnyObject? in
-          
-          // strings
-          if let value = value as? String { return value }
-          else  if let value = value as? [String] { return value }
-            
-            // numbers
-          else if let value = value as? Int { return value }
-          else if let value = value as? [Int] { return value }
-          else if let value = value as? Float { return value }
-          else if let value = value as? [Float] { return value }
-          else if let value = value as? Double { return value }
-          else if let value = value as? [Double] { return value }
-            
-            // booleans
-          else if let value = value as? Bool { return value }
-            
-            // dictionaries
-          else if let value = value as? [String: AnyObject] { return value }
-            
-            // classes
-          else if let value = value as? Any { return NSObject.reflect(value) }
-          return nil
-        }.filter { $0 != nil }.map { $0! }
-        
-        jsonString = toPrettyJSONString(dictionary) ?? "\n\(x!)"
-        
-        break
+        // arrays
+      case .Some(is NSArray): jsonString = toPrettyJSONString(NSObject.reflect(objects: x as! NSArray)); break
+        // dictionaries
       case .Some(is NSDictionary): jsonString = toPrettyJSONString(x as! NSDictionary) ?? "\n\(x!)"; break
       case .Some(is [String: AnyObject]): jsonString = toPrettyJSONString(x as! [String: AnyObject]) ?? "\n\(x!)"; break
+        // errors
       case .Some(is NSError):
         let error = x as! NSError
         
@@ -552,11 +517,10 @@ public struct Atlantis {
         jsonString = toPrettyJSONString(properties)
         
         break
-      case .Some(is NSObject):
-        jsonString = toPrettyJSONString(NSObject.reflect(x as! NSObject))
-        break
+        // objects
       case .Some(is Any):
-        jsonString = toPrettyJSONString(NSObject.reflect(x!))
+        let dictionary = NSObject.reflect(object: x!)
+        if !dictionary.isEmpty { jsonString = toPrettyJSONString(dictionary) }
         break
       default: break
       }
@@ -580,7 +544,7 @@ public struct Atlantis {
     private static func addDash(x: Any) -> String {
       let string = "\(x)"
       if Configuration.showExtraInfo {
-        return "- " + (string.isEmpty ? "empty" : string)
+        return "- " + (string.isEmpty ? "\"\"" : string)
       }
       return string
     }
@@ -618,20 +582,34 @@ public struct Atlantis {
 
 extension NSObject {
   
-  private class func echo<T: NSObject>(dictionary: [String: AnyObject]?, template: T) -> T? {
-    if let dictionary = dictionary, template = template as? T {
-      Mirror(reflecting: template).children.forEach { label, value in
-        if let label = label, value = dictionary[label] {
-          template.setValue(value, forKey: label)
-        }
-      }
-      if let template = template as? T { return template }
+  private class func reflect(objects objects: NSArray) -> [AnyObject] {
+    return objects.map { value -> AnyObject in
+      
+      // strings
+      if let value = value as? String { return value }
+      else  if let value = value as? [String] { return value }
+        
+      // booleans
+      else if value is Bool { return value }
+        
+        // numbers
+      else if let value = value as? Int { return value }
+      else if let value = value as? [Int] { return value }
+      else if let value = value as? Float { return value }
+      else if let value = value as? [Float] { return value }
+      else if let value = value as? Double { return value }
+      else if let value = value as? [Double] { return value }
+        
+        // dictionaries
+      else if let value = value as? NSDictionary { return value }
+      else if let value = value as? [String: AnyObject] { return value }
+        
+        // objects
+      else { return NSObject.reflect(object: value) }
     }
-    return nil
   }
   
-  private class func reflect(object: Any) -> [String: AnyObject] {
-    
+  private class func reflect<T>(object object: T) -> [String: AnyObject] {
     var dictionary: [String: AnyObject] = [:]
     
     Mirror(reflecting: object).children.forEach { label, value in
@@ -650,11 +628,19 @@ extension NSObject {
         
         // booleans
       else if let key = label, value = value as? Bool { dictionary.updateValue(value, forKey: key) }
+      else if let key = label, value = value as? [Bool] { dictionary.updateValue(value, forKey: key) }
         
         // dictionaries
       else if let key = label, value = value as? [String: AnyObject] { dictionary.updateValue(value, forKey: key) }
+        
+        // objects
+      else if let key = label, value = value as? T { dictionary.updateValue(NSObject.reflect(object: value), forKey: key) }
+      else if let key = label, value = value as? [T] { dictionary.updateValue(value.map { NSObject.reflect(object: $0) }, forKey: key) }
+      else if let key = label, value = value as? NSArray { dictionary.updateValue(value.map { NSObject.reflect(object: $0) } as [AnyObject] , forKey: key) }
+      else if let key = label { dictionary.updateValue(NSObject.reflect(object: value), forKey: key) }
     }
     
     return dictionary
   }
 }
+
