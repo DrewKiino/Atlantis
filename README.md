@@ -16,7 +16,7 @@ pod 'Atlantis'
 
 Then do a pod install, and voila!
 
-## Filterable Log Levels
+## Unique Log Levels
 This includes the stamp trace of the source file, function name, and line number.
 
 ```swift
@@ -297,6 +297,53 @@ log.debug(parents)
 // and any objects within any objects. 👍🏼
 ```
 
+## Error Handling
+
+`Atlantis` will print all errors like so,
+
+```swift
+Error: [ViewController.swift/viewDidLoad()/line:98] 
+{
+  "code" : 404,
+  "localizedDescription" : "The operation couldn’t be completed. (Hello, World! error 404.)",
+  "domain" : "Hello, World!",
+  "userInfo" : {
+  	"error": "found"
+  	"note": "syntax"
+  }
+}
+```
+
+It will automatically parse the localized description, error code, domain, and user info from the `NSError` object.
+
+```swift
+Atlantis.Configuration.highlightsErrors // default false
+```
+
+By default, `Atlantis` will print all logs equally in white or in color if colored logging is enabled. However, if you enable error highlighting it will always highlight errors regardless of any set parameters.
+
+```swift
+Atlantis.Configuration.filteredErrorCodes
+```
+
+`Atlantis` has the ability to filter out errors based on their error code. For example, you have a method that sends requests to the network and you made it so it can only make one request at a time so it will always cancel the last request made. However, some APIs are out of our control and will send out errors without your permission. 
+
+Say you want to filter out error code `-1099 // offline error`, 
+
+```swift
+Atlantis.Configuration.filteredErrorCodes.append(-1099)
+
+// let's call a method that throws errors, however one of the 
+// errors is something we want to filter out.
+method() { error in 
+	log.error(error) // can either be error 404 or -1099?
+}
+
+// will only print the error if the error code is 404
+```
+
+Now, if the method throws a `-1099` error, `Atlantis` will will skip over it!
+
 ## .Tap
 Tap is an `Atlantis` extension that allows you to print like how you would regularly do, but will return the value of the input.
 
@@ -333,7 +380,8 @@ promise()
 ```
 Note that `.Tap` can only take in single inputs.
 
-## Custom Configuration
+## Configuration
+#### Levels
 
 ```swift
 Atlantis.Configuration.logLevel // default .Verbose
@@ -345,11 +393,15 @@ For example, if you set the log level to `Debug`, `Atlantis` will only print log
 
 Setting the log level to `.None` means `Atlantis` will skip all log execution. I recommend using this when the app is shift off to production.
 
+#### Source Information
+
 ```swift
 Atlantis.Configuration.showExtraInfo // default true
 ```
 
 You can also hide the source details by setting this parameter to false.
+
+#### Coloring
 
 `Atlantis` is able to provide full color customization,
 
@@ -375,49 +427,6 @@ Atlantis.Configuration.logColors.debug = Atlantis.XCodeColor(fg: UIColor, bg: UI
 By default, `Atlantis` doesn't print its logs in colors. if you want colors, you will need to set the configuration during launch.
 
 However, for you to enable log colors you will have to first download the xcode package manager [Alcatraz](http://alcatraz.io/) and enable it inside xcode. Pull up the package manager afterwards and install [XCodeColors](https://github.com/robbiehanson/XcodeColors).
-
-```swift
-Atlantis.Configuration.highlightsErrors // default false
-```
-
-`Atlantis` will print all errors like so,
-
-```swift
-Error: [ViewController.swift/viewDidLoad()/line:98] 
-{
-  "code" : 404,
-  "localizedDescription" : "The operation couldn’t be completed. (Hello, World! error 404.)",
-  "domain" : "Hello, World!",
-  "userInfo" : {
-  	"error": "found"
-  	"note": "syntax"
-  }
-}
-```
-
-It will automatically parse the localized description, error code, domain, and user info from the `NSError` object.
-
-By default, `Atlantis` will print all logs equally in white or in color if colored logging is enabled. However, if you enable error highlighting it will always highlight errors regardless of any set parameters.
-
-```swift
-Atlantis.Configuration.filteredErrorCodes
-```
-
-`Atlantis` has the ability to filter out errors based on their error code. For example, you have a method that sends requests to the network and you made it so it can only make one request at a time so it will always cancel the last request made. However, some APIs are out of our control and will send out errors without your permission. 
-
-Say you want to filter out error code `-1099 // offline error`, 
-
-```swift
-Atlantis.Configuration.filteredErrorCodes.append(-1099)
-
-// let's call a method that throws errors, however one of the 
-// errors is something we want to filter out.
-method() { error in 
-	log.error(error) // can either be error 404 or -1099?
-}
-```
-
-Now, if the method throws a `404` error, `Atlantis` will log it and will skip over errors with a `-1099` code!
 
 ## Afterword
 ### To Do
