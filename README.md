@@ -262,7 +262,7 @@ log.debug(parentObject)
 // Not impressed? 
 
 let parentObject1 = ParentObject()
-let parentObject2 = ParentObject() // one of it's child has a dictionary 
+let parentObject2 = ParentObject() // one of its child has a dictionary 
 
 let parents: [ParentObject] = [parentObject1, parentObject2]
 
