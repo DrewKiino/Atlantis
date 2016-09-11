@@ -42,7 +42,7 @@ Which prints the following...
 
 ### - `optionals`
 
-```Atlantis``` will safely unwrap any optionals.
+`Atlantis` will safely unwrap any optionals.
 
 ```swift
 let doIExist: String? = nil
@@ -50,6 +50,18 @@ let doIExist: String? = nil
 log.warning(doIExist)
 
 // prints 'nil'
+```
+
+### - `empty strings`
+
+`Atlantis` will visually print empty strings instead of it usually being hidden.
+
+```swift
+let emptyString = ""
+
+log.warning(emptyString)
+
+// prints ""
 ```
 
 ### - `native types`
