@@ -54,7 +54,7 @@ log.warning(doIExist)
 
 ### - `empty strings`
 
-`Atlantis` will visually print empty strings instead of it usually being hidden.
+`Atlantis` will visually print empty strings.
 
 ```swift
 let emptyString: String = ""
