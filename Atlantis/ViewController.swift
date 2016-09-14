@@ -16,8 +16,14 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     
+<<<<<<< Updated upstream
     Atlantis.Configuration.hasColoredLogs = false
 //    Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
+=======
+    Atlantis.Configuration.highlightsErrors = true
+    Atlantis.Configuration.hasColoredLogs = true
+    Atlantis.Configuration.coloredLogLevels = [.verbose, .error]
+>>>>>>> Stashed changes
     
     let object = Object()
     object.number = 1
