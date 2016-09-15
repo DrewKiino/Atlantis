@@ -8,8 +8,11 @@
 
 import Foundation
 import UIKit
+import SwiftyBeaver
 
 public struct Atlantis {
+  
+  private static let sbLog = SwiftyBeaver.self
   
   public enum LogLevel: Int {
     case Verbose  = 5
@@ -112,6 +115,39 @@ public struct Atlantis {
     public static var coloredLogLevels: [Atlantis.LogLevel] = [.Verbose, .Info, .Warning, .Debug, .Error]
     
     public static var alignmentThreshold: Int = 5
+    
+    public static func integrateWithSwiftyBeaver(appID: String, appSecret: String, encryptionKey: String) {
+      let cloud = SBPlatformDestination(appID: appID, appSecret: appSecret, encryptionKey: encryptionKey)
+      switch Atlantis.Configuration.logLevel {
+      case .Verbose:
+        cloud.minLevel = .Verbose
+        break
+      case .Info:
+        cloud.minLevel = .Info
+        break
+      case .Warning:
+        cloud.minLevel = .Warning
+        break
+      case .Debug:
+        cloud.minLevel = .Debug
+        break
+      case .Error:
+        cloud.minLevel = .Error
+        break
+      case .None: // skip integration if log level is none
+        return
+      }
+      Atlantis.sbLog.addDestination(cloud)
+      Atlantis.Configuration._integrateWithSwiftyBeaver = true
+      Atlantis.Configuration.appID = appID
+      Atlantis.Configuration.appSecret = appSecret
+      Atlantis.Configuration.encryptionKey = encryptionKey
+    }
+    
+    private static var appID: String?
+    private static var appSecret: String?
+    private static var encryptionKey: String?
+    private static var _integrateWithSwiftyBeaver: Bool = false
   }
   
   private struct Singleton {
@@ -291,7 +327,16 @@ public struct Atlantis {
           if let string = array.last {
             name = string
           }
-          let string = "[\(name)/\(functionName)/line:\(lineNumber)]"
+          
+          // date
+          let date = NSDate()
+          let formatter = NSDateFormatter()
+          formatter.dateStyle = .ShortStyle
+          formatter.timeStyle = .ShortStyle
+          formatter.timeZone = NSTimeZone(name: "PT")
+          let dateString = formatter.stringFromDate(date)
+          
+          let string = "[\(name)/\(functionName)/line:\(lineNumber)] @ \(dateString)"
           return string + " "
         }
         return ""
@@ -299,7 +344,7 @@ public struct Atlantis {
     }
     
     private static func acceptableLogLevel(logSettings: Atlantis.Logger.LogSettings) -> Bool {
-      return logSettings.logLevel.rawValue <= Configuration.logLevel.rawValue
+      return logSettings.logLevel.rawValue <= Atlantis.Configuration.logLevel.rawValue
     }
     
     public let tap = Tap()
@@ -491,6 +536,43 @@ public struct Atlantis {
       catch { return nil }
     }
     
+    private static func addDash(x: Any) -> String {
+      let string = "\(x)"
+      if Configuration.showExtraInfo {
+        return "- " + (string.isEmpty ? "\"\"" : string)
+      }
+      return string
+    }
+    
+    private static func calculateLegibleWhitespace(log: String, startString: String, endString: String, logLevel: LogLevel) -> String {
+      
+      let charCount = startString.debugDescription.characters.count
+      
+      
+      maxCharCount = maxCharCount > charCount ? maxCharCount : charCount
+      
+      smallerCountOccurances = (charCount < maxCharCount) ? (smallerCountOccurances + 1) : 0
+      
+      if smallerCountOccurances > Atlantis.Configuration.alignmentThreshold {
+        
+        return log + endString
+        
+      } else {
+        
+        var whitespace: String = ""
+        
+        if maxCharCount - charCount > 0 {
+          for _ in 0 ..< maxCharCount - charCount {
+            whitespace += " "
+          }
+        }
+        
+        let string: String = log + whitespace + endString
+        
+        return string
+      }
+    }
+    
     private static func log<T>(x: T?, _ logSettings: LogSettings) {
       let logLevel = logSettings.logLevel
       var jsonString: String? = nil
@@ -534,48 +616,37 @@ public struct Atlantis {
       let source = logSettings.sourceString()
       let string = "\(unwrap)"
       let coloredString: String = Atlantis.Configuration.hasColoredPrints ? (color + string + reset) : string
+
       let log: String = "\(color)\(level)\(reset)\(source)"
       
       let prettyLog: String = calculateLegibleWhitespace(log, startString: "\(level)\(source)", endString: coloredString, logLevel: logLevel)
       
-      dispatch_async(dispatch_get_main_queue()) { print(prettyLog) }
-    }
-    
-    private static func addDash(x: Any) -> String {
-      let string = "\(x)"
-      if Configuration.showExtraInfo {
-        return "- " + (string.isEmpty ? "\"\"" : string)
-      }
-      return string
-    }
-    
-    private static func calculateLegibleWhitespace(log: String, startString: String, endString: String, logLevel: LogLevel) -> String {
-      
-      let charCount = startString.debugDescription.characters.count
-      
-      
-      maxCharCount = maxCharCount > charCount ? maxCharCount : charCount
-      
-      smallerCountOccurances = (charCount < maxCharCount) ? (smallerCountOccurances + 1) : 0
-      
-      if smallerCountOccurances > Atlantis.Configuration.alignmentThreshold {
-        
-        return log + endString
-        
-      } else {
-        
-        var whitespace: String = ""
-        
-        if maxCharCount - charCount > 0 {
-          for _ in 0 ..< maxCharCount - charCount {
-            whitespace += " "
-          }
+      // swifty beaver integration
+      // https://github.com/SwiftyBeaver/SwiftyBeaver
+      if Atlantis.Configuration._integrateWithSwiftyBeaver {
+        let sbLog = "\(level)\(source)\(string)"
+        switch logLevel {
+        case .Verbose:
+          Atlantis.sbLog.verbose(sbLog)
+          break
+        case .Info:
+          Atlantis.sbLog.info(sbLog)
+          break
+        case .Warning:
+          Atlantis.sbLog.warning(sbLog)
+          break
+        case .Debug:
+          Atlantis.sbLog.debug(sbLog)
+          break
+        case .Error:
+          Atlantis.sbLog.error(sbLog)
+          break
+        case .None:
+          break
         }
-        
-        let string: String = log + whitespace + endString
-        
-        return string
       }
+      
+      dispatch_async(dispatch_get_main_queue()) { print(prettyLog) }
     }
   }
 }

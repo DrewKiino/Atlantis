@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     
-    Atlantis.Configuration.hasColoredLogs = false
 //    Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
     
     let object = Object()
@@ -59,9 +58,9 @@ class ViewController: UIViewController {
     
     object.objectArray = [object2, object3]
     
-    log.debug(UIColor())
+//    log.debug(UIColor())
     
-//    log.debug(object)
+//    log.debug(object2)
 //    log.debug([object, object2, object3])
     
 //    let user2 = User2()
@@ -71,16 +70,16 @@ class ViewController: UIViewController {
     
 //    log.debug(User2()) // any
 //    log.debug([object, object2, 1, "Hello"])
-//    log.debug(1)
-//    log.debug([1])
-//    log.debug(1.1 as Float)
-//    log.debug([1.2 as Float])
-//    log.debug(1.3 as Double)
-//    log.debug([1.4 as Double])
-//    log.debug("")
-//    log.debug([""])
-//    log.debug(true)
-//    log.debug([true])
+    log.debug(1)
+    log.debug([1])
+    log.debug(1.1 as Float)
+    log.debug([1.2 as Float])
+    log.debug(1.3 as Double)
+    log.debug([1.4 as Double])
+    log.debug("")
+    log.debug([""])
+    log.debug(true)
+    log.debug([true])
     
 //    let dictionary: [String: AnyObject] = [
 //      "": 1,
@@ -97,14 +96,14 @@ class ViewController: UIViewController {
 //    let error3 = NSError(domain: "Hello, World!", code: -999, userInfo: nil)
 
 //    log.error(error)
-    log.error(error2)
+//    log.error(error2)
 //    log.error(error3)
 
-    log.verbose(string)
-    log.info(string)
-    log.warning(string)
-    log.debug(string)
-    log.error(string)
+//    log.verbose(string)
+//    log.info(string)
+//    log.warning(string)
+//    log.debug(string)
+//    log.error(string)
 //
 //    aaaaaaafseaelieshfashif()
 //    faeoifhieahflsfjseifseilfjiasefjlasej()
