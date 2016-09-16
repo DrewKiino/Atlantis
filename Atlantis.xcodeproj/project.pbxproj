@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E17BB80011D7737A4023DC0 /* Pods_Atlantis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1C893A999B3FE084B7481F /* Pods_Atlantis.framework */; };
 		EE0FA5AA1D24D784005CC085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FA5A91D24D784005CC085 /* AppDelegate.swift */; };
 		EE0FA5AC1D24D784005CC085 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FA5AB1D24D784005CC085 /* ViewController.swift */; };
 		EE0FA5AF1D24D784005CC085 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0FA5AD1D24D784005CC085 /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F1C893A999B3FE084B7481F /* Pods_Atlantis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Atlantis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atlantis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis.release.xcconfig"; sourceTree = "<group>"; };
+		AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atlantis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis.debug.xcconfig"; sourceTree = "<group>"; };
 		EE0FA5A61D24D784005CC085 /* Atlantis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Atlantis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE0FA5A91D24D784005CC085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE0FA5AB1D24D784005CC085 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E17BB80011D7737A4023DC0 /* Pods_Atlantis.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF68D6BDF3E4782EB3F2D725 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F1C893A999B3FE084B7481F /* Pods_Atlantis.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3434298674FE1BE4BBC63A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */,
+				6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EE0FA59D1D24D783005CC085 = {
 			isa = PBXGroup;
 			children = (
 				EE0FA5A81D24D784005CC085 /* Atlantis */,
 				EE0FA5A71D24D784005CC085 /* Products */,
+				D3434298674FE1BE4BBC63A4 /* Pods */,
+				CF68D6BDF3E4782EB3F2D725 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,9 +106,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE0FA5B81D24D784005CC085 /* Build configuration list for PBXNativeTarget "Atlantis" */;
 			buildPhases = (
+				A4182C2C6E0016A219A8D114 /* [CP] Check Pods Manifest.lock */,
 				EE0FA5A21D24D783005CC085 /* Sources */,
 				EE0FA5A31D24D783005CC085 /* Frameworks */,
 				EE0FA5A41D24D783005CC085 /* Resources */,
+				70F5CA92407502581E179887 /* [CP] Embed Pods Frameworks */,
+				06B5B6CB24B75CD72E331116 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -144,6 +171,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06B5B6CB24B75CD72E331116 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70F5CA92407502581E179887 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4182C2C6E0016A219A8D114 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE0FA5A21D24D783005CC085 /* Sources */ = {
@@ -267,6 +342,7 @@
 		};
 		EE0FA5B91D24D784005CC085 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Atlantis/Info.plist;
@@ -282,6 +358,7 @@
 		};
 		EE0FA5BA1D24D784005CC085 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Atlantis/Info.plist;

@@ -2,7 +2,6 @@
 
 
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.4'
 
 use_frameworks!
 
@@ -10,16 +9,6 @@ use_frameworks!
 
 target 'Atlantis' do
 
-pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git'
+# pod 'SwiftyBeaver'
 
 end
-
-
-#####################################
-# unit testing
-
-target 'AtlantisTests' do
-
-end
-
-#####################################

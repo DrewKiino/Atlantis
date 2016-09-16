@@ -16,11 +16,12 @@ pod 'Atlantis'
 
 Then do a pod install, and voila!
 
-## Unique Log Levels
-This includes the stamp trace of the source file, function name, and line number.
+## Unique Logs
+This includes the stamp trace of the log's `date`, `source`, `function`, `line number`, as well as the **actual** `type` of the value.
+
+**Note**: *The date's format goes by month, date, year, hour, then time of day.*
 
 ```swift
-
 // I suggest initializing this variable in the global instance
 let log = Atlantis.Logger()
 
@@ -34,7 +35,7 @@ log.error("Hello, World!")
 
 Which prints the following...
 
-![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors.png?raw=true)
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/log-print-colors2.png?raw=true)
 
 ## Powerful Printing
 
@@ -150,6 +151,27 @@ log.debug(dictionary)
 [
 	"question": "will  this work?"
 ]
+```
+
+```swift
+// say we got two response objects from the server,
+// now both objects are the same but one of them has missing data...
+
+responses.map { log.debug($0) }
+
+// prints
+{
+	"response": "Here is some data!",
+	"success" 200
+},
+{
+	"response": null,
+	"success" 200
+}
+
+// Atlantis will print all of the object's keys regardless of missing
+// or empty values and will print null if need be.
+
 ```
 
 ### - `objects`
@@ -307,6 +329,55 @@ log.debug(parents)
 // Atlantis' logging is infinitely and ambiguously recursive,
 // it supports almost all data types including arrays, dictionaries, 
 // and any objects within any objects. 👍🏼
+```
+
+### - `Structs`
+
+```swift
+// Great!! Now on to some more stand-alone but much needed types.
+
+struct Struct {
+  var name: String = "Bob the Builder"
+  var skills: [String] = ["structures, buildings"]
+}
+
+log.debug(Struct())
+    
+// prints
+{
+  "skills" : [
+    "structures, buildings"
+  ],
+  "name" : "Bob the Builder"
+}
+```
+
+### - `Enum`
+
+```swift
+enum ErrorType {
+	case Severe
+	case Moderate
+	case Casual
+}
+
+let type: ErrorType = .Severe
+
+log.debug(type)
+
+// prints
+Severe
+```
+
+```swift
+// one more example.
+
+log.debug(ErrorType.Moderate)
+log.debug(ErrorType.Casual)
+
+// prints
+Moderate
+Casual
 ```
 
 ## Error Handling

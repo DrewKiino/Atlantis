@@ -16,14 +16,15 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     
-<<<<<<< Updated upstream
-    Atlantis.Configuration.hasColoredLogs = false
 //    Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
-=======
-    Atlantis.Configuration.highlightsErrors = true
     Atlantis.Configuration.hasColoredLogs = true
-    Atlantis.Configuration.coloredLogLevels = [.verbose, .error]
->>>>>>> Stashed changes
+    
+    
+    log.verbose("Hello, World")
+    log.info("Hello, World")
+    log.warning("Hello, World")
+    log.debug("Hello, World")
+    log.error("Hello, World")
     
     let object = Object()
     object.number = 1
@@ -65,9 +66,9 @@ class ViewController: UIViewController {
     
     object.objectArray = [object2, object3]
     
-    log.debug(UIColor())
+//    log.debug(UIColor())
     
-//    log.debug(object)
+//    log.debug(object2)
 //    log.debug([object, object2, object3])
     
 //    let user2 = User2()
@@ -76,6 +77,29 @@ class ViewController: UIViewController {
 //    user2.id = "54321"
     
 //    log.debug(User2()) // any
+    
+//    struct Struct {
+//      var name: String = "Bob the Builder"
+//      var skills: [String] = ["structures, buildings"]
+//    }
+//    
+//    let this = Struct()
+//    
+//    log.debug(this)
+    
+    enum This {
+      case IsCool
+      case IsNotCool
+    }
+    
+//    let this: This = .IsCool
+//    let thiz: This = .IsCool
+//    
+//    log.debug(This.IsCool)
+//    log.debug(This.IsNotCool)
+//    log.debug(this)
+//    log.debug(thiz)
+    
 //    log.debug([object, object2, 1, "Hello"])
 //    log.debug(1)
 //    log.debug([1])
@@ -103,14 +127,14 @@ class ViewController: UIViewController {
 //    let error3 = NSError(domain: "Hello, World!", code: -999, userInfo: nil)
 
 //    log.error(error)
-    log.error(error2)
+//    log.error(error2)
 //    log.error(error3)
 
-    log.verbose(string)
-    log.info(string)
-    log.warning(string)
-    log.debug(string)
-    log.error(string)
+//    log.verbose(string)
+//    log.info(string)
+//    log.warning(string)
+//    log.debug(string)
+//    log.error(string)
 //
 //    aaaaaaafseaelieshfashif()
 //    faeoifhieahflsfjseifseilfjiasefjlasej()
