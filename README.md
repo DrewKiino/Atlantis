@@ -45,7 +45,7 @@ Which prints the following...
 
 ![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/proper-text-alignment.png?raw=true)
 
-`Atlantis' automatically aligns its logs based on it's previous alignments. However you can change this configuration by setting this variable,
+`Atlantis` automatically aligns its logs based on it's previous alignments. However you can change this configuration by setting this variable,
 
 `Atlantis.Configuration.alignmentThreshold`
 
