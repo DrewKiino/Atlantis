@@ -134,6 +134,7 @@
 				TargetAttributes = {
 					EE0FA5A51D24D783005CC085 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 8SJ3UJ3963;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -342,7 +343,9 @@
 			baseConfigurationReference = AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8SJ3UJ3963;
 				INFOPLIST_FILE = Atlantis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TotemV.Atlantis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,7 +358,9 @@
 			baseConfigurationReference = 6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8SJ3UJ3963;
 				INFOPLIST_FILE = Atlantis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TotemV.Atlantis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
