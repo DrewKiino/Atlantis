@@ -41,6 +41,16 @@ Which prints the following...
 
 `Atlantis` is built to `pretty print` literally everything.
 
+### - `proper text alignment`
+
+![alt tag](https://github.com/DrewKiino/Atlantis/blob/master/Images/proper-text-alignment.png?raw=true)
+
+`Atlantis` will magically align its logs based on it's previous log alignments. However you can change this configuration by setting this variable,
+
+`Atlantis.Configuration.alignmentThreshold`
+
+which defaults to `5`.
+
 ### - `optionals`
 
 `Atlantis` will safely unwrap any optionals.

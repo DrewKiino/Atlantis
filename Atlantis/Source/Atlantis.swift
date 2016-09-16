@@ -426,11 +426,13 @@ public struct Atlantis {
     }
     
     private static func getEscapeString() -> String {
-      return Configuration.Reserved.ESCAPE
+      if Configuration.hasColoredLogs { return Configuration.Reserved.ESCAPE }
+      else { return "" }
     }
     
     private static func getResetString() -> String {
-      return Configuration.Reserved.RESET
+      if Configuration.hasColoredLogs { return Configuration.Reserved.RESET }
+      else { return "" }
     }
     
     private static func getRGBString(logLevel: LogLevel) -> String {
@@ -516,12 +518,13 @@ public struct Atlantis {
       
       let charCount = startString.debugDescription.characters.count
       
-      
       maxCharCount = maxCharCount > charCount ? maxCharCount : charCount
       
       smallerCountOccurances = (charCount < maxCharCount) ? (smallerCountOccurances + 1) : 0
       
       if smallerCountOccurances > Atlantis.Configuration.alignmentThreshold {
+        
+        maxCharCount = 0 // reset the max char count
         
         return log + endString
         

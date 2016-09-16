@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  let string: String = "Hello, World!"
+  let string: String = "Proper Text Alignment!"
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
 //    Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
 //    Atlantis.Configuration.hasColoredLogs = true
 
-    log.verbose("Hello, World")
-    log.info("Hello, World")
-    log.warning("Hello, World")
-    log.debug("Hello, World")
-    log.error("Hello, World")
+//    log.verbose("Hello, World")
+//    log.info("Hello, World")
+//    log.warning("Hello, World")
+//    log.debug("Hello, World")
+//    log.error("Hello, World")
     
     let object = Object()
     object.number = 1
@@ -135,15 +135,28 @@ class ViewController: UIViewController {
 //    log.debug(string)
 //    log.error(string)
 //
-//    aaaaaaafseaelieshfashif()
-//    faeoifhieahflsfjseifseilfjiasefjlasej()
-//    faeoifhie()
-//    aaaaaaafseaelieshfashif()
-//    faeoifhie()
-//    awfawfawfawfaeoifhieahflsfjseifseilfjiasefjlasej()
-//    aaaaaaafseaelieshfashif()
-//    aaaaaaafseaelieshfashif()
-//    
+    aaaaaaafseaelieshfashif()
+    faeoifhieahflsfjseifseilfjiasefjlasej()
+    faeoifhie()
+    aaaaaaafseaelieshfashif()
+    faeoifhie()
+    awfawfawfawfaeoifhieahflsfjseifseilfjiasefjlasej()
+    aaaaaaafseaelieshfashif()
+    faeoifhie()
+    faeoifhie()
+    faeoifhie()
+    faeoifhie()
+    faeoifhie()
+    faeoifhie()
+    faeoifhie()
+    aaaaaaafseaelieshfashif()
+    faeoifhie()
+    awfawfawfawfaeoifhieahflsfjseifseilfjiasefjlasej()
+    aaaaaaafseaelieshfashif()
+    faeoifhie()
+    faeoifhie()
+    faeoifhie()
+//
 //    log.verbose(string)
 //    log.info(string)
 //    log.warning(string)
@@ -157,7 +170,7 @@ class ViewController: UIViewController {
   }
 
   func aaaaaaafseaelieshfashif() {
-    log.verbose(string)
+    log.info(string)
   }
   
   func faeoifhieahflsfjseifseilfjiasefjlasej() {
@@ -165,36 +178,36 @@ class ViewController: UIViewController {
   }
   
   func awfawfawfawfaeoifhieahflsfjseifseilfjiasefjlasej() {
-    log.info(string)
+    log.verbose(string)
   }
   
   func faeoifhie() {
-    log.warning(string)
+    log.info(string)
   }
 }
 
 
-open class Object {
-  open var number: Int?
-  open var numberArray: [Int]?
-  open var string: String?
-  open var stringArray: [String]?
-  open var float: Float?
-  open var floatArray: [Float]?
-  open var double: Double?
-  open var doubleArray: [Double]?
-  open var bool: Bool?
-  open var boolArray: [Bool]?
-  open var dictionary: [String: AnyObject]?
-  open var object: Object?
-  open var objectArray: [Object]?
+public class Object {
+  public var number: Int?
+  public var numberArray: [Int]?
+  public var string: String?
+  public var stringArray: [String]?
+  public var float: Float?
+  public var floatArray: [Float]?
+  public var double: Double?
+  public var doubleArray: [Double]?
+  public var bool: Bool?
+  public var boolArray: [Bool]?
+  public var dictionary: [String: AnyObject]?
+  public var object: Object?
+  public var objectArray: [Object]?
 }
 
-open class User2 {
-  open var name: String?
-  open var id: String?
-  open var age: Int?
-  open var user: User2?
+public class User2 {
+  public var name: String?
+  public var id: String?
+  public var age: Int?
+  public var user: User2?
 }
 
 
