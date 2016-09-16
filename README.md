@@ -154,7 +154,7 @@ log.debug(dictionary)
 ```
 
 ```swift
-// Something different? Say we got two response objects from the server,
+// Say we got two response objects from the server,
 // now both objects are the same but one of them has missing data...
 
 responses.map { log.debug($0) }
