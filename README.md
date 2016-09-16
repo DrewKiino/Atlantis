@@ -153,6 +153,27 @@ log.debug(dictionary)
 ]
 ```
 
+```swift
+// Something different? Say we got two response objects from the server,
+// now both objects are the same but one of them has missing data...
+
+responses.map { log.debug($0) }
+
+// prints
+{
+	"response": "Here is some data!",
+	"success" 200
+},
+{
+	"response": null,
+	"success" 200
+}
+
+// Atlantis will print all of the object's keys regardless of missing
+// or empty values and will print null if need be.
+
+```
+
 ### - `objects`
 ```swift
 // now let's get to the fun part,
