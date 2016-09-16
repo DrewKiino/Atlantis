@@ -8,11 +8,9 @@
 
 import Foundation
 import UIKit
-import SwiftyBeaver
+import CoreData
 
 public struct Atlantis {
-  
-  private static let sbLog = SwiftyBeaver.self
   
   public enum LogLevel: Int {
     case Verbose  = 5
@@ -115,39 +113,6 @@ public struct Atlantis {
     public static var coloredLogLevels: [Atlantis.LogLevel] = [.Verbose, .Info, .Warning, .Debug, .Error]
     
     public static var alignmentThreshold: Int = 5
-    
-    public static func integrateWithSwiftyBeaver(appID: String, appSecret: String, encryptionKey: String) {
-      let cloud = SBPlatformDestination(appID: appID, appSecret: appSecret, encryptionKey: encryptionKey)
-      switch Atlantis.Configuration.logLevel {
-      case .Verbose:
-        cloud.minLevel = .Verbose
-        break
-      case .Info:
-        cloud.minLevel = .Info
-        break
-      case .Warning:
-        cloud.minLevel = .Warning
-        break
-      case .Debug:
-        cloud.minLevel = .Debug
-        break
-      case .Error:
-        cloud.minLevel = .Error
-        break
-      case .None: // skip integration if log level is none
-        return
-      }
-      Atlantis.sbLog.addDestination(cloud)
-      Atlantis.Configuration._integrateWithSwiftyBeaver = true
-      Atlantis.Configuration.appID = appID
-      Atlantis.Configuration.appSecret = appSecret
-      Atlantis.Configuration.encryptionKey = encryptionKey
-    }
-    
-    private static var appID: String?
-    private static var appSecret: String?
-    private static var encryptionKey: String?
-    private static var _integrateWithSwiftyBeaver: Bool = false
   }
   
   private struct Singleton {
@@ -209,38 +174,38 @@ public struct Atlantis {
     
     #if os(iOS)
     public init(fg: UIColor, bg: UIColor? = nil) {
-    var redComponent: CGFloat = 0
-    var greenComponent: CGFloat = 0
-    var blueComponent: CGFloat = 0
-    var alphaComponent: CGFloat = 0
-    
-    fg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
-    self.fg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
-    if let bg = bg {
-    bg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
-    self.bg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
-    }
-    else {
-    self.bg = nil
-    }
-    }
-    #else
-    public init(fg: NSColor, bg: NSColor? = nil) {
-      if let fgColorSpaceCorrected = fg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-        self.fg = (Int(fgColorSpaceCorrected.redComponent * 255), Int(fgColorSpaceCorrected.greenComponent * 255), Int(fgColorSpaceCorrected.blueComponent * 255))
-      }
-      else {
-        self.fg = nil
-      }
+      var redComponent: CGFloat = 0
+      var greenComponent: CGFloat = 0
+      var blueComponent: CGFloat = 0
+      var alphaComponent: CGFloat = 0
       
-      if let bg = bg,
-        let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-        
-        self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+      fg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
+      self.fg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
+      if let bg = bg {
+        bg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
+        self.bg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
       }
       else {
         self.bg = nil
       }
+    }
+    #else
+    public init(fg: NSColor, bg: NSColor? = nil) {
+    if let fgColorSpaceCorrected = fg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
+    self.fg = (Int(fgColorSpaceCorrected.redComponent * 255), Int(fgColorSpaceCorrected.greenComponent * 255), Int(fgColorSpaceCorrected.blueComponent * 255))
+    }
+    else {
+    self.fg = nil
+    }
+    
+    if let bg = bg,
+    let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
+    
+    self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+    }
+    else {
+    self.bg = nil
+    }
     }
     #endif
     
@@ -335,9 +300,12 @@ public struct Atlantis {
           formatter.timeStyle = .ShortStyle
           formatter.timeZone = NSTimeZone(name: "PT")
           let dateString = formatter.stringFromDate(date)
+            .stringByReplacingOccurrencesOfString(" ", withString: "")
+            .stringByReplacingOccurrencesOfString(",", withString: "@")
           
-          let string = "[\(name)/\(functionName)/line:\(lineNumber)] @ \(dateString)"
-          return string + " "
+          let string = "\(dateString)/\(name)/\(functionName)/line:\(lineNumber)"
+          
+          return string
         }
         return ""
       }
@@ -574,15 +542,21 @@ public struct Atlantis {
     }
     
     private static func log<T>(x: T?, _ logSettings: LogSettings) {
+      
+      // get the type name
+      var type: String!; if let x = x {
+        type = String(Mirror(reflecting: x).subjectType).stringByTrimmingCharactersInSet(NSCharacterSet.letterCharacterSet().invertedSet)
+      }; type = type ?? ""
+      
       let logLevel = logSettings.logLevel
       var jsonString: String? = nil
       switch x {
-        // arrays
+      // arrays
       case .Some(is NSArray): jsonString = toPrettyJSONString(NSObject.reflect(objects: x as! NSArray)); break
-        // dictionaries
+      // dictionaries
       case .Some(is NSDictionary): jsonString = toPrettyJSONString(x as! NSDictionary) ?? "\n\(x!)"; break
       case .Some(is [String: AnyObject]): jsonString = toPrettyJSONString(x as! [String: AnyObject]) ?? "\n\(x!)"; break
-        // errors
+      // errors
       case .Some(is NSError):
         let error = x as! NSError
         
@@ -599,7 +573,7 @@ public struct Atlantis {
         jsonString = toPrettyJSONString(properties)
         
         break
-        // objects
+      // objects
       case .Some(is Any):
         let dictionary = NSObject.reflect(object: x!)
         if !dictionary.isEmpty { jsonString = toPrettyJSONString(dictionary) }
@@ -613,38 +587,13 @@ public struct Atlantis {
       let color = getRGBString(logLevel)
       let reset = getResetString()
       let level = getLogLevelString(logLevel)
-      let source = logSettings.sourceString()
+      let source = "[\(logSettings.sourceString())/type:\(type)] "
       let string = "\(unwrap)"
       let coloredString: String = Atlantis.Configuration.hasColoredPrints ? (color + string + reset) : string
-
+      
       let log: String = "\(color)\(level)\(reset)\(source)"
       
       let prettyLog: String = calculateLegibleWhitespace(log, startString: "\(level)\(source)", endString: coloredString, logLevel: logLevel)
-      
-      // swifty beaver integration
-      // https://github.com/SwiftyBeaver/SwiftyBeaver
-      if Atlantis.Configuration._integrateWithSwiftyBeaver {
-        let sbLog = "\(level)\(source)\(string)"
-        switch logLevel {
-        case .Verbose:
-          Atlantis.sbLog.verbose(sbLog)
-          break
-        case .Info:
-          Atlantis.sbLog.info(sbLog)
-          break
-        case .Warning:
-          Atlantis.sbLog.warning(sbLog)
-          break
-        case .Debug:
-          Atlantis.sbLog.debug(sbLog)
-          break
-        case .Error:
-          Atlantis.sbLog.error(sbLog)
-          break
-        case .None:
-          break
-        }
-      }
       
       dispatch_async(dispatch_get_main_queue()) { print(prettyLog) }
     }
@@ -660,7 +609,7 @@ extension NSObject {
       if let value = value as? String { return value }
       else  if let value = value as? [String] { return value }
         
-      // booleans
+        // booleans
       else if value is Bool { return value }
         
         // numbers
@@ -705,13 +654,28 @@ extension NSObject {
       else if let key = label, value = value as? [String: AnyObject] { dictionary.updateValue(value, forKey: key) }
         
         // objects
-      else if let key = label, value = value as? T { dictionary.updateValue(NSObject.reflect(object: value), forKey: key) }
-      else if let key = label, value = value as? [T] { dictionary.updateValue(value.map { NSObject.reflect(object: $0) }, forKey: key) }
-      else if let key = label, value = value as? NSArray { dictionary.updateValue(value.map { NSObject.reflect(object: $0) } as [AnyObject] , forKey: key) }
-      else if let key = label { dictionary.updateValue(NSObject.reflect(object: value), forKey: key) }
+      else if let key = label, value = value as? T {
+        let object = NSObject.reflect(object: value)
+        if object.isEmpty { dictionary.updateValue("null", forKey: key) }
+        else { dictionary.updateValue(object, forKey: key) }
+      }
+      else if let key = label, value = value as? [T] {
+        let objects = value.map { NSObject.reflect(object: $0) }
+        if objects.isEmpty { dictionary.updateValue("null", forKey: key) }
+        else { dictionary.updateValue(objects, forKey: key) }
+      }
+      else if let key = label, value = value as? NSArray {
+        let objects = value.map { NSObject.reflect(object: $0) } as [AnyObject]
+        if objects.isEmpty { dictionary.updateValue("null", forKey: key) }
+        else { dictionary.updateValue(objects, forKey: key) }
+      }
+      else if let key = label {
+        let object = NSObject.reflect(object: value)
+        if object.isEmpty { dictionary.updateValue("null", forKey: key) }
+        else { dictionary.updateValue(object, forKey: key) }
+      }
     }
     
     return dictionary
   }
 }
-

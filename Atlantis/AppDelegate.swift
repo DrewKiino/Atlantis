@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
     
-    Atlantis.Configuration.integrateWithSwiftyBeaver("LQnnLq", appSecret: "p1ztkwz53t3yOzpWwznye41vy3iuwphp", encryptionKey: "uHvAcjnsyhHkGwPh1gaqchDdcbqrmeav")
-    
     return true
   }
 

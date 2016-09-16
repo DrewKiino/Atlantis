@@ -17,6 +17,14 @@ class ViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
     
 //    Atlantis.Configuration.coloredLogLevels = [.Verbose, .Error]
+    Atlantis.Configuration.hasColoredLogs = true
+    
+    
+    log.verbose("Hello, World")
+    log.info("Hello, World")
+    log.warning("Hello, World")
+    log.debug("Hello, World")
+    log.error("Hello, World")
     
     let object = Object()
     object.number = 1
@@ -69,17 +77,40 @@ class ViewController: UIViewController {
 //    user2.id = "54321"
     
 //    log.debug(User2()) // any
+    
+//    struct Struct {
+//      var name: String = "Bob the Builder"
+//      var skills: [String] = ["structures, buildings"]
+//    }
+//    
+//    let this = Struct()
+//    
+//    log.debug(this)
+    
+    enum This {
+      case IsCool
+      case IsNotCool
+    }
+    
+//    let this: This = .IsCool
+//    let thiz: This = .IsCool
+//    
+//    log.debug(This.IsCool)
+//    log.debug(This.IsNotCool)
+//    log.debug(this)
+//    log.debug(thiz)
+    
 //    log.debug([object, object2, 1, "Hello"])
-    log.debug(1)
-    log.debug([1])
-    log.debug(1.1 as Float)
-    log.debug([1.2 as Float])
-    log.debug(1.3 as Double)
-    log.debug([1.4 as Double])
-    log.debug("")
-    log.debug([""])
-    log.debug(true)
-    log.debug([true])
+//    log.debug(1)
+//    log.debug([1])
+//    log.debug(1.1 as Float)
+//    log.debug([1.2 as Float])
+//    log.debug(1.3 as Double)
+//    log.debug([1.4 as Double])
+//    log.debug("")
+//    log.debug([""])
+//    log.debug(true)
+//    log.debug([true])
     
 //    let dictionary: [String: AnyObject] = [
 //      "": 1,
