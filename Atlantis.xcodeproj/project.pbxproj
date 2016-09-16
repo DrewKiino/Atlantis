@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4E17BB80011D7737A4023DC0 /* Pods_Atlantis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1C893A999B3FE084B7481F /* Pods_Atlantis.framework */; };
+		EE0FA5AA1D24D784005CC085 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FA5A91D24D784005CC085 /* AppDelegate.swift */; };
+		EE0FA5AC1D24D784005CC085 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FA5AB1D24D784005CC085 /* ViewController.swift */; };
+		EE0FA5AF1D24D784005CC085 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0FA5AD1D24D784005CC085 /* Main.storyboard */; };
+		EE0FA5B11D24D784005CC085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE0FA5B01D24D784005CC085 /* Assets.xcassets */; };
+		EE0FA5B41D24D784005CC085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE0FA5B21D24D784005CC085 /* LaunchScreen.storyboard */; };
+		EE0FA5BD1D24D7AC005CC085 /* Atlantis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0FA5BC1D24D7AC005CC085 /* Atlantis.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4F1C893A999B3FE084B7481F /* Pods_Atlantis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Atlantis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atlantis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis.release.xcconfig"; sourceTree = "<group>"; };
+		AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atlantis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis.debug.xcconfig"; sourceTree = "<group>"; };
+		EE0FA5A61D24D784005CC085 /* Atlantis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Atlantis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE0FA5A91D24D784005CC085 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EE0FA5AB1D24D784005CC085 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EE0FA5AE1D24D784005CC085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EE0FA5B01D24D784005CC085 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EE0FA5B31D24D784005CC085 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EE0FA5B51D24D784005CC085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE0FA5BC1D24D7AC005CC085 /* Atlantis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atlantis.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE0FA5A31D24D783005CC085 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E17BB80011D7737A4023DC0 /* Pods_Atlantis.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF68D6BDF3E4782EB3F2D725 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F1C893A999B3FE084B7481F /* Pods_Atlantis.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3434298674FE1BE4BBC63A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */,
+				6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EE0FA59D1D24D783005CC085 = {
+			isa = PBXGroup;
+			children = (
+				EE0FA5A81D24D784005CC085 /* Atlantis */,
+				EE0FA5A71D24D784005CC085 /* Products */,
+				D3434298674FE1BE4BBC63A4 /* Pods */,
+				CF68D6BDF3E4782EB3F2D725 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EE0FA5A71D24D784005CC085 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FA5A61D24D784005CC085 /* Atlantis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE0FA5A81D24D784005CC085 /* Atlantis */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FA5BB1D24D787005CC085 /* Source */,
+				EE0FA5A91D24D784005CC085 /* AppDelegate.swift */,
+				EE0FA5B01D24D784005CC085 /* Assets.xcassets */,
+				EE0FA5B51D24D784005CC085 /* Info.plist */,
+				EE0FA5B21D24D784005CC085 /* LaunchScreen.storyboard */,
+				EE0FA5AD1D24D784005CC085 /* Main.storyboard */,
+				EE0FA5AB1D24D784005CC085 /* ViewController.swift */,
+			);
+			path = Atlantis;
+			sourceTree = "<group>";
+		};
+		EE0FA5BB1D24D787005CC085 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				EE0FA5BC1D24D7AC005CC085 /* Atlantis.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE0FA5A51D24D783005CC085 /* Atlantis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE0FA5B81D24D784005CC085 /* Build configuration list for PBXNativeTarget "Atlantis" */;
+			buildPhases = (
+				A4182C2C6E0016A219A8D114 /* [CP] Check Pods Manifest.lock */,
+				EE0FA5A21D24D783005CC085 /* Sources */,
+				EE0FA5A31D24D783005CC085 /* Frameworks */,
+				EE0FA5A41D24D783005CC085 /* Resources */,
+				70F5CA92407502581E179887 /* [CP] Embed Pods Frameworks */,
+				06B5B6CB24B75CD72E331116 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Atlantis;
+			productName = Atlantis;
+			productReference = EE0FA5A61D24D784005CC085 /* Atlantis.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE0FA59E1D24D783005CC085 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Andrew Aquino";
+				TargetAttributes = {
+					EE0FA5A51D24D783005CC085 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = EE0FA5A11D24D783005CC085 /* Build configuration list for PBXProject "Atlantis" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EE0FA59D1D24D783005CC085;
+			productRefGroup = EE0FA5A71D24D784005CC085 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE0FA5A51D24D783005CC085 /* Atlantis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE0FA5A41D24D783005CC085 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0FA5B41D24D784005CC085 /* LaunchScreen.storyboard in Resources */,
+				EE0FA5B11D24D784005CC085 /* Assets.xcassets in Resources */,
+				EE0FA5AF1D24D784005CC085 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06B5B6CB24B75CD72E331116 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		70F5CA92407502581E179887 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Atlantis/Pods-Atlantis-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4182C2C6E0016A219A8D114 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE0FA5A21D24D783005CC085 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE0FA5AC1D24D784005CC085 /* ViewController.swift in Sources */,
+				EE0FA5BD1D24D7AC005CC085 /* Atlantis.swift in Sources */,
+				EE0FA5AA1D24D784005CC085 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE0FA5AD1D24D784005CC085 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE0FA5AE1D24D784005CC085 /* Base */,
+			);
+			name = Main.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		EE0FA5B21D24D784005CC085 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE0FA5B31D24D784005CC085 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE0FA5B61D24D784005CC085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EE0FA5B71D24D784005CC085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE0FA5B91D24D784005CC085 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB46DB13A7998C1927FE1C04 /* Pods-Atlantis.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Atlantis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TotemV.Atlantis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EE0FA5BA1D24D784005CC085 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6762BDAB6272808F849DBF7C /* Pods-Atlantis.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Atlantis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = TotemV.Atlantis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE0FA5A11D24D783005CC085 /* Build configuration list for PBXProject "Atlantis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0FA5B61D24D784005CC085 /* Debug */,
+				EE0FA5B71D24D784005CC085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE0FA5B81D24D784005CC085 /* Build configuration list for PBXNativeTarget "Atlantis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0FA5B91D24D784005CC085 /* Debug */,
+				EE0FA5BA1D24D784005CC085 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE0FA59E1D24D783005CC085 /* Project object */;
+}
