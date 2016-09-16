@@ -134,10 +134,7 @@
 				TargetAttributes = {
 					EE0FA5A51D24D783005CC085 = {
 						CreatedOnToolsVersion = 7.3.1;
-<<<<<<< Updated upstream
-=======
 						LastSwiftMigration = 0800;
->>>>>>> Stashed changes
 					};
 				};
 			};
@@ -349,10 +346,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TotemV.Atlantis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< Updated upstream
-=======
 				SWIFT_VERSION = 3.0;
->>>>>>> Stashed changes
 			};
 			name = Debug;
 		};
@@ -365,10 +359,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TotemV.Atlantis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-<<<<<<< Updated upstream
-=======
 				SWIFT_VERSION = 3.0;
->>>>>>> Stashed changes
 			};
 			name = Release;
 		};
