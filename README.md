@@ -139,14 +139,14 @@ log.debug(numberArray)
 ```swift
 // on to dictionaries...
 let dictionary: [String: AnyObject] = [
-	"quote": "It is better to have loved, that to have never loved at all?"
+	"quote": "It is better to have loved, than to have never loved at all?"
 ] 
 
 log.debug(dictionary)
 
 // prints
 [
-	"quote": "It is better to have loved, that to have never loved at all?"
+	"quote": "It is better to have loved, than to have never loved at all?"
 ]
 ```
 
