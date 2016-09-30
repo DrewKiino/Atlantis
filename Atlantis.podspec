@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.name = "Atlantis"
   s.summary = "Atlantis is a debug logger framework built in Swift."
   s.requires_arc = true
-  s.version = "1.0.6"
+  s.version = "1.0.7"
   s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = { "[Andrew Aquino]" => "[andrew@totemv.com]" }
   s.homepage = 'http://totemv.com/drewkiino.github.io'
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/DrewKiino/Atlantis.git', :tag => 'master' }
   s.source_files = "Atlantis/Source/*.{swift}"
 
-  s.dependency 'SwiftyBeaver'
+  # s.dependency 'SwiftyBeaver'
 
 end
