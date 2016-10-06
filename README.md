@@ -11,7 +11,10 @@
 Add this to your [podfile](https://cocoapods.org/)...
 
 ```swift
+# for Swift 3.0
 pod 'Atlantis'
+# for Swift 2.3
+pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git', :branch => 'swift2.3' 
 ```
 
 Then do a pod install, and voila!
