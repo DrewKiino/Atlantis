@@ -187,27 +187,27 @@ class ViewController: UIViewController {
 }
 
 
-public class Object {
-  public var number: Int?
-  public var numberArray: [Int]?
-  public var string: String?
-  public var stringArray: [String]?
-  public var float: Float?
-  public var floatArray: [Float]?
-  public var double: Double?
-  public var doubleArray: [Double]?
-  public var bool: Bool?
-  public var boolArray: [Bool]?
-  public var dictionary: [String: AnyObject]?
-  public var object: Object?
-  public var objectArray: [Object]?
+open class Object {
+  open var number: Int?
+  open var numberArray: [Int]?
+  open var string: String?
+  open var stringArray: [String]?
+  open var float: Float?
+  open var floatArray: [Float]?
+  open var double: Double?
+  open var doubleArray: [Double]?
+  open var bool: Bool?
+  open var boolArray: [Bool]?
+  open var dictionary: [String: AnyObject]?
+  open var object: Object?
+  open var objectArray: [Object]?
 }
 
-public class User2 {
-  public var name: String?
-  public var id: String?
-  public var age: Int?
-  public var user: User2?
+open class User2 {
+  open var name: String?
+  open var id: String?
+  open var age: Int?
+  open var user: User2?
 }
 
 
