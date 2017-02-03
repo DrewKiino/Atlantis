@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import CoreData
 
-public struct Atlantis {
+@objc
+public class Atlantis: NSObject {
   
   public enum LogLevel: Int {
     case verbose  = 5
@@ -174,38 +175,38 @@ public struct Atlantis {
     
     #if os(iOS)
     public init(fg: UIColor, bg: UIColor? = nil) {
-      var redComponent: CGFloat = 0
-      var greenComponent: CGFloat = 0
-      var blueComponent: CGFloat = 0
-      var alphaComponent: CGFloat = 0
-      
-      fg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
-      self.fg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
-      if let bg = bg {
-        bg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
-        self.bg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
-      }
-      else {
-        self.bg = nil
-      }
-    }
-    #else
-    public init(fg: NSColor, bg: NSColor? = nil) {
-    if let fgColorSpaceCorrected = fg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-    self.fg = (Int(fgColorSpaceCorrected.redComponent * 255), Int(fgColorSpaceCorrected.greenComponent * 255), Int(fgColorSpaceCorrected.blueComponent * 255))
-    }
-    else {
-    self.fg = nil
-    }
+    var redComponent: CGFloat = 0
+    var greenComponent: CGFloat = 0
+    var blueComponent: CGFloat = 0
+    var alphaComponent: CGFloat = 0
     
-    if let bg = bg,
-    let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
-    
-    self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+    fg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
+    self.fg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
+    if let bg = bg {
+    bg.getRed(&redComponent, green: &greenComponent, blue: &blueComponent, alpha:&alphaComponent)
+    self.bg = (Int(redComponent * 255), Int(greenComponent * 255), Int(blueComponent * 255))
     }
     else {
     self.bg = nil
     }
+    }
+    #else
+    public init(fg: NSColor, bg: NSColor? = nil) {
+      if let fgColorSpaceCorrected = fg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
+        self.fg = (Int(fgColorSpaceCorrected.redComponent * 255), Int(fgColorSpaceCorrected.greenComponent * 255), Int(fgColorSpaceCorrected.blueComponent * 255))
+      }
+      else {
+        self.fg = nil
+      }
+      
+      if let bg = bg,
+        let bgColorSpaceCorrected = bg.colorUsingColorSpaceName(NSCalibratedRGBColorSpace) {
+        
+        self.bg = (Int(bgColorSpaceCorrected.redComponent * 255), Int(bgColorSpaceCorrected.greenComponent * 255), Int(bgColorSpaceCorrected.blueComponent * 255))
+      }
+      else {
+        self.bg = nil
+      }
     }
     #endif
     
@@ -555,7 +556,7 @@ public struct Atlantis {
       var jsonString: String? = nil
       switch x {
       // arrays
-      case .some(is NSArray): jsonString = toPrettyJSONString(NSObject.reflect(objects: x as! NSArray) as AnyObject); break
+      case .some(is NSArray): jsonString = toPrettyJSONString(NSObject.reflect(x as! NSArray) as AnyObject); break
       // dictionaries
       case .some(is NSDictionary): jsonString = toPrettyJSONString(x as! NSDictionary) ?? "\n\(x!)"; break
       case .some(is [String: AnyObject]): jsonString = toPrettyJSONString(x as! [String: AnyObject] as AnyObject) ?? "\n\(x!)"; break
@@ -578,7 +579,7 @@ public struct Atlantis {
         break
       // objects
       case .some(is Any):
-        let dictionary = NSObject.reflect(object: x!)
+        let dictionary = NSObject.reflect(x!)
         if !dictionary.isEmpty { jsonString = toPrettyJSONString(dictionary as AnyObject) }
         break
       default: break
@@ -605,7 +606,7 @@ public struct Atlantis {
 
 extension NSObject {
   
-  fileprivate class func reflect(objects: NSArray) -> [AnyObject] {
+  fileprivate class func reflect(_ objects: NSArray) -> [AnyObject] {
     return objects.map { value -> AnyObject in
       
       // strings
@@ -628,11 +629,11 @@ extension NSObject {
       else if let value = value as? [String: AnyObject] { return value as AnyObject }
         
         // objects
-      else { return NSObject.reflect(objects: value as! NSArray) as AnyObject }
+      else { return NSObject.reflect(value as! NSArray) as AnyObject }
     }
   }
   
-  fileprivate class func reflect<T>(object: T) -> [String: AnyObject] {
+  fileprivate class func reflect<T>(_ object: T) -> [String: AnyObject] {
     var dictionary: [String: AnyObject] = [:]
     
     Mirror(reflecting: object).children.forEach { label, value in
@@ -658,12 +659,12 @@ extension NSObject {
         
         // objects
       else if let key = label, let value = value as? T {
-        let object = NSObject.reflect(object: value)
+        let object = NSObject.reflect(value)
         if object.isEmpty { dictionary.updateValue("null" as AnyObject, forKey: key) }
         else { dictionary.updateValue(object as AnyObject, forKey: key) }
       }
       else if let key = label, let value = value as? [T] {
-        let objects = value.map { NSObject.reflect(object: $0) }
+        let objects = value.map { NSObject.reflect($0) }
         if objects.isEmpty { dictionary.updateValue("null" as AnyObject, forKey: key) }
         else { dictionary.updateValue(objects as AnyObject, forKey: key) }
       }
@@ -682,3 +683,4 @@ extension NSObject {
     return dictionary
   }
 }
+

@@ -186,7 +186,6 @@ class ViewController: UIViewController {
   }
 }
 
-
 open class Object {
   open var number: Int?
   open var numberArray: [Int]?
