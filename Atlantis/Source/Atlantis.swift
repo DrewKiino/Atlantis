@@ -265,7 +265,7 @@ public class Atlantis: NSObject {
     
     fileprivate let logQueue = Singleton.LogQueue
     fileprivate 
-    alias closure = () -> Void
+    typealias closure = () -> Void
     fileprivate typealias void = Void
     fileprivate static var maxCharCount: Int = 0
     fileprivate static var smallerCountOccurances: Int = 0
