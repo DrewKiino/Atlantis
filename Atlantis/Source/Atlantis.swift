@@ -264,7 +264,8 @@ public class Atlantis: NSObject {
   public struct Logger {
     
     fileprivate let logQueue = Singleton.LogQueue
-    fileprivate typealias closure = () -> Void
+    fileprivate 
+    alias closure = () -> Void
     fileprivate typealias void = Void
     fileprivate static var maxCharCount: Int = 0
     fileprivate static var smallerCountOccurances: Int = 0
@@ -591,7 +592,7 @@ public class Atlantis: NSObject {
       let color = getRGBString(logLevel)
       let reset = getResetString()
       let level = getLogLevelString(logLevel)
-      let source = "[\(logSettings.sourceString())/type:\(type)] "
+      let source = "[\(logSettings.sourceString())/type:\(type ?? "")] "
       let string = "\(unwrap)"
       let coloredString: String = Atlantis.Configuration.hasColoredPrints ? (color + string + reset) : string
       
