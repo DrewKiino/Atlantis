@@ -9,6 +9,5 @@ use_frameworks!
 
 target 'Atlantis' do
 
-# pod 'SwiftyBeaver'
 
 end

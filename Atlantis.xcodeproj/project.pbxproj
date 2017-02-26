@@ -135,7 +135,7 @@
 					EE0FA5A51D24D783005CC085 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 8SJ3UJ3963;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
