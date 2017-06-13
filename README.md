@@ -25,7 +25,7 @@ This includes the stamp trace of the log's `date`, `source`, `function`, `line n
 **Note**: *The date's format goes by month, date, year, hour, then time of day.*
 
 ```swift
-// I suggest initializing this variable in the global instance
+// You do not need to initialize this, the variable is initialized in file.
 let log = Atlantis.Logger()
 
 // Let's log some stuff
