@@ -122,7 +122,7 @@ class ViewController: UIViewController {
 //    log.debug(nothing)
     
 //    let error = NSError(domain: "Hello, World!", code: 404, userInfo: nil)
-    let error2 = NSError(domain: "Hello, World!", code: 404, userInfo: ["Hello": "World", "Number": 0])
+//    let error2 = NSError(domain: "Hello, World!", code: 404, userInfo: ["Hello": "World", "Number": 0])
 //    let error3 = NSError(domain: "Hello, World!", code: -999, userInfo: nil)
 
 //    log.error(error)
