@@ -522,7 +522,7 @@ public class Atlantis: NSObject {
     
     fileprivate static func calculateLegibleWhitespace(_ log: String, startString: String, endString: String, logLevel: LogLevel) -> String {
       
-      let charCount = startString.debugDescription.characters.count
+      let charCount = startString.debugDescription.count
       
       maxCharCount = maxCharCount > charCount ? maxCharCount : charCount
       

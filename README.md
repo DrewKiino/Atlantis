@@ -11,10 +11,12 @@
 Add this to your [podfile](https://cocoapods.org/)...
 
 ```
+# for Swift 4.0
+pod 'Atlantis', :git => 'https://github.com/aaronjsutton/Atlantis.git', :branch => 'swift-4-patch'
 # for Swift 3.0
 pod 'Atlantis'
 # for Swift 2.3
-pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git', :branch => 'swift2.3' 
+pod 'Atlantis', :git => 'https://github.com/DrewKiino/Atlantis.git', :branch => 'swift2.3'
 ```
 
 Then do a pod install, and voila!
@@ -143,7 +145,7 @@ log.debug(numberArray)
 // on to dictionaries...
 let dictionary: [String: AnyObject] = [
 	"quote": "It is better to have loved, than to have never loved at all?"
-] 
+]
 
 log.debug(dictionary)
 
@@ -211,10 +213,10 @@ let dog = Dog()
 
 log.debug(dog)
 
-// prints 
+// prints
 {
 	"name": "Doug"
-} 
+}
 ```
 ``` swift
 // But what about objects you created with no native subclasses?
@@ -232,7 +234,7 @@ log.debug(customObject)
 {
 	"id": 123,
 	"name": "Doug"
-} 
+}
 
 // Haha, no way?
 ```
@@ -258,7 +260,7 @@ log.debug(parentObject)
 		"id": 123,
 		"name": "Doug"
 	}
-} 
+}
 
 // That's right.
 ```
@@ -290,14 +292,14 @@ log.debug(parentObject)
 			"name": "Doug"
 		}
 	]
-} 
+}
 ```
 
 ```swift
-// Not impressed? 
+// Not impressed?
 
 let parentObject1 = ParentObject()
-let parentObject2 = ParentObject() // one of its child has a dictionary 
+let parentObject2 = ParentObject() // one of its child has a dictionary
 
 let parents: [ParentObject] = [parentObject1, parentObject2]
 
@@ -340,7 +342,7 @@ log.debug(parents)
 ]
 
 // Atlantis' logging is infinitely and ambiguously recursive,
-// it supports almost all data types including arrays, dictionaries, 
+// it supports almost all data types including arrays, dictionaries,
 // and any objects within any objects. 👍🏼
 ```
 
@@ -355,7 +357,7 @@ struct Struct {
 }
 
 log.debug(Struct())
-    
+
 // prints
 {
   "skills" : [
@@ -398,7 +400,7 @@ Casual
 `Atlantis` will print all errors like so,
 
 ```swift
-Error: [ViewController.swift/viewDidLoad()/line:98] 
+Error: [ViewController.swift/viewDidLoad()/line:98]
 {
   "code" : 404,
   "localizedDescription" : "The operation couldn’t be completed. (Hello, World! error 404.)",
@@ -422,16 +424,16 @@ By default, `Atlantis` will print all logs equally in white or in color if color
 Atlantis.Configuration.filteredErrorCodes
 ```
 
-`Atlantis` has the ability to filter out errors based on their error code. For example, you have a method that sends requests to the network and you made it so it can only make one request at a time so it will always cancel the last request made. However, some APIs are out of our control and will send out errors without your permission. 
+`Atlantis` has the ability to filter out errors based on their error code. For example, you have a method that sends requests to the network and you made it so it can only make one request at a time so it will always cancel the last request made. However, some APIs are out of our control and will send out errors without your permission.
 
-Say you want to filter out error code `-1099 // offline error`, 
+Say you want to filter out error code `-1099 // offline error`,
 
 ```swift
 Atlantis.Configuration.filteredErrorCodes.append(-1099)
 
-// let's call a method that throws errors, however one of the 
+// let's call a method that throws errors, however one of the
 // errors is something we want to filter out.
-method() { error in 
+method() { error in
 	log.error(error) // can either be error 404 or -1099?
 }
 
@@ -483,7 +485,7 @@ Note that `.Tap` can only take in single inputs.
 Atlantis.Configuration.logLevel // default .Verbose
 ```
 
-The five log levels are: `Verbose`, `Info`, `Warning`, `Debug`, `Error`, and `None`, ordered by priority. 
+The five log levels are: `Verbose`, `Info`, `Warning`, `Debug`, `Error`, and `None`, ordered by priority.
 
 For example, if you set the log level to `Debug`, `Atlantis` will only print logs whose levels are `Debug` and `Error`.
 
@@ -505,7 +507,7 @@ You can also hide the source details by setting this parameter to false.
 // colors
 Atlantis.Configuration.hasColoredLogs // default false
 Atlantis.Configuration.hasWhiteBackground // default false
-Atlantis.Configuration.coloredLogLevels // default [.Verbose, .Info, .Warning, .Debug, .Error] 
+Atlantis.Configuration.coloredLogLevels // default [.Verbose, .Info, .Warning, .Debug, .Error]
 
 // using a Tuple initializer
 
